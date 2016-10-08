@@ -13,7 +13,12 @@ const sqlProvider = {
     create: sql('./sql/user/create.sql'),
     delete: sql('./sql/user/delete.sql'),
   },
-  //playlists
+  playlists: {
+    all: sql('./sql/playlist/all.sql'),
+    find: sql('./sql/playlist/find.sql'),
+    create: sql('./sql/playlist/create.sql'),
+    delete: sql('./sql/playlist/delete.sql'),
+  },
   //tracks?
 };
 
