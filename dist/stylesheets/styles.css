@@ -1,7 +1,13 @@
-body {
+/*body {
   background-color: yellow;
-}
+}*/
 
 h1 {
   font-style: bold;
+}
+
+.map {
+  height: 90%;
+  width:100%;
+  position: absolute;
 }

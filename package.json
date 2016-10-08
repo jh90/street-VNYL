@@ -4,7 +4,8 @@
   "description": "There's no I in VNYL",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --inline --hot --progress --colors"
   },
   "repository": {
     "type": "git",
@@ -27,12 +28,14 @@
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "express-sessions": "^1.0.6",
+    "fs": "0.0.1-security",
     "jsonwebtoken": "^7.1.9",
     "morgan": "^1.7.0",
     "pg-promise": "^5.3.4",
     "react": "^15.3.2",
     "react-cookie": "^0.4.8",
     "react-dom": "^15.3.2",
+    "react-google-maps": "^4.11.0",
     "react-modal": "^1.5.2",
     "react-router": "^2.8.1",
     "superagent": "^2.3.0",
