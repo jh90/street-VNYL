@@ -1,40 +1,56 @@
 import React from 'react';
-import { GoogleMap } from 'react-google-maps';
-// import { GoogleMapLoader } from 'react-google-maps';
+import { GoogleMap, GoogleMapLoader, Marker, SearchBox } from 'react-google-maps';
 
 export default class App extends React.Component {
   constructor() {
     super();
+    this.state = {
+      user: '',
+      data: [],
+    };
   }
   render() {
     let map;
     return (
-      <div className='map'>
-         <GoogleMap
-                containerProps={{
-                  style: {
-                    height: '100%',
-                  },
-                }}
-                defaultZoom={12}
-                defaultCenter={{ lat: 40.78, lng: -73.96 }}
-              >
-          </GoogleMap>
+      <div className="map">
+        <GoogleMapLoader
+          containerElement={
+            <div
+              {...this.props}
+              style={{
+                height: '100%',
+              }}
+            />
+          }
+          googleMapElement={
+            <GoogleMap
+              containerProps={{
+                style: {
+                  height: '100%',
+                },
+              }}
+              defaultZoom={12}
+              defaultCenter={{ lat: 40.78, lng: -73.96 }}
+            >
+             {
+                this.state.data.map((place, idx) => {
+                  console.log(place.long);
+                  return (
+                    <Marker
+                      position={{
+                        lat: place.lat,
+                        lng: place.long,
+                      }}
+                    />
+                  );
+                })
+            }
+            </GoogleMap>
+          }
+        />
       </div>
     );
   }
 }
 
-// <div>
-//       <GoogleMapLoader
-//         containerElement={<div />}
-//         googleMapElement={
-//           <GoogleMap
-//             defaultZoom={3}
-//             defaultCenter={{lat: -25.363882, lng: 131.044922}}
-//           >
 
-//           </GoogleMap>
-//         }
-//       />
-//       </div>
