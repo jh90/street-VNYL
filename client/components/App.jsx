@@ -16,8 +16,8 @@ export default class App extends React.Component {
                     height: '100%',
                   },
                 }}
-                defaultZoom={2}
-                defaultCenter={{ lat: 40.71, lng: -74.01 }}
+                defaultZoom={12}
+                defaultCenter={{ lat: 40.78, lng: -73.96 }}
               >
           </GoogleMap>
       </div>
