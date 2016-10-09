@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 
 class AuthController {
   static login(req, res) {
+    console.log(res);
     const { email, password } = req.body;
     UserDAO.findBy({ email })
       .then((user) => {
@@ -24,10 +25,14 @@ class AuthController {
   static signUp(req, res) {
     const email = req.body.email;
     let password = req.body.password;
+    console.log(email);
+    console.log(password);
     if (email.length > 0 && password.length > 0) {
       password = bcrypt.hashSync(password, 10);
+      console.log(password);
       UserDAO.create({ email, password })
           .then((user) => {
+            console.log(user);
             req.session.currentUser = user;
             const token = createToken(user);
             res.cookie('token', token);

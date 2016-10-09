@@ -22,8 +22,8 @@ export default class App extends React.Component {
     if(!this.state.loggedIn) {
       return (
         <div>
-          <Link to="/login" id="login">Login</Link>
-
+          <Link to="/login" id="login">Login / </Link>
+          <Link to="/register" id="register">Register</Link>
         </div>
       );
     } else {
@@ -84,5 +84,4 @@ export default class App extends React.Component {
 }
 
 App.propTypes = propTypes;
-
 
