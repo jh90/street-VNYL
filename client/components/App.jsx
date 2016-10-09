@@ -18,27 +18,18 @@ export default class App extends React.Component {
       loggedIn: false,
     };
   }
-  loggedInLinks() {
-    if(!this.state.loggedIn) {
+  loggedInLink() {
       return (
         <div>
-          <Link to="/login" id="login">Login / </Link>
-          <Link to="/register" id="register">Register</Link>
+          <Link to="/login" id="login">Login</Link>
         </div>
       );
-    } else {
-      return (
-        <div id="sign-out">
-          <Link id="signOut" to="/" onClick={this.signOut}>Sign Out</Link>
-        </div>
-      );
-    }
   }
   render() {
     return (
       <div id="container">
         <div>
-          {this.loggedInLinks()}
+          {this.loggedInLink()}
           {this.props.children}
         </div>
         <div className="map">
