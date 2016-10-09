@@ -72,7 +72,6 @@ export default class App extends React.Component {
       userDisplayElement = (
         <div>
           <button onClick={this.signOut}>Log-Out</button>
-          <TripForm sendTrip={this.sendTrip} />
         </div>
       );
     } else {
@@ -129,7 +128,6 @@ export default class App extends React.Component {
     );
   }
 }
-
 
 
 

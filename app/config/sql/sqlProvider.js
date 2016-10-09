@@ -8,16 +8,16 @@ function sql(file) {
 
 const sqlProvider = {
   users: {
-    all: sql('./sql/user/all.sql'),
-    find: sql('./sql/user/find.sql'),
-    create: sql('./sql/user/create.sql'),
-    delete: sql('./sql/user/delete.sql'),
+    all: sql('./user/all.sql'),
+    find: sql('./user/find.sql'),
+    create: sql('./user/create.sql'),
+    delete: sql('./user/delete.sql'),
   },
   playlists: {
-    all: sql('./sql/playlist/all.sql'),
-    find: sql('./sql/playlist/find.sql'),
-    create: sql('./sql/playlist/create.sql'),
-    delete: sql('./sql/playlist/delete.sql'),
+    all: sql('./playlist/all.sql'),
+    find: sql('./playlist/find.sql'),
+    create: sql('./playlist/create.sql'),
+    delete: sql('./playlist/delete.sql'),
   },
   //tracks?
 };
