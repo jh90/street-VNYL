@@ -5,7 +5,7 @@ const propTypes = {
   buttonText: React.PropTypes.string,
 };
 
-class UserForm extends React.Component {
+export default class UserForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { email: '', password: '' };
@@ -26,7 +26,7 @@ class UserForm extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div id="login-form">
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
@@ -42,7 +42,7 @@ class UserForm extends React.Component {
             placeholder="password..."
             onChange={this.handleInputChange}
           />
-          <input type="submit" value={this.props.buttonText} />
+          <input type="submit" onClick={this.handleSubmit} value={this.props.buttonText} />
         </form>
       </div>
     );
@@ -51,7 +51,7 @@ class UserForm extends React.Component {
 
 UserForm.propTypes = propTypes;
 
-export default UserForm;
+
 
 
 
