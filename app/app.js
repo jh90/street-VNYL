@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const userRouter = require('./routes/userRouter');
-const chirpRouter = require('./routes/chirpRouter');
 const authRouter = require('./routes/authRouter');
 const authentication = require('./middleware/authentication');
 const session = require('express-session');
