@@ -6,6 +6,8 @@ const userRouter = require('./routes/userRouter');
 const authRouter = require('./routes/authRouter');
 const authentication = require('./middleware/authentication');
 const session = require('express-session');
+const trackRouter = require('./routes/TrackRouter.js');
+const playlistRouter = require('./routes/PlaylistRouter')
 
 const app = express();
 
@@ -25,5 +27,7 @@ app.use(morgan('dev'));
 app.use('/api', authentication);
 app.use('/api', authRouter);
 app.use('/api/users', userRouter);
+app.use('/api/tracks', trackRouter);
+app.use('/api/playlists', playlistRouter);
 
 module.exports = app;
