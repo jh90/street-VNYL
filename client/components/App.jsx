@@ -22,7 +22,9 @@ export default class App extends React.Component {
   loggedInLink() {
       return (
         <div>
+        <NavBar />
           <Link to="/login" id="login">Login</Link>
+
         </div>
       );
   }
@@ -30,7 +32,6 @@ export default class App extends React.Component {
     return (
       <div id="container">
         <div>
-          <NavBar />
           {this.loggedInLink()}
           {this.props.children}
         </div>
