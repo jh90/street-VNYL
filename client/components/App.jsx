@@ -16,22 +16,22 @@ export default class App extends React.Component {
     this.state = {
       user: '',
       data: [],
-      loggedIn: false,
+
     };
   }
-  loggedInLink() {
-      return (
-        <div>
-          <Link to="/login" id="login">Login</Link>
-        </div>
-      );
-  }
+  // loggedInLink() {
+  //     return (
+  //       <div>
+  //         <Link to="/login" id="login">Login</Link>
+  //       </div>
+  //     );
+  // }
   render() {
     return (
       <div id="container">
         <div>
           <NavBar />
-          {this.loggedInLink()}
+
           {this.props.children}
         </div>
         <div className="map">
