@@ -4,6 +4,7 @@ import { GoogleMap, GoogleMapLoader, Marker, SearchBox } from 'react-google-maps
 import request from 'superagent';
 import cookie from 'react-cookie';
 import UserAuth from './UserAuth.jsx';
+import NavBar from './NavBar.jsx';
 
 const propTypes = {
   children: React.PropTypes.element,
@@ -29,6 +30,7 @@ export default class App extends React.Component {
     return (
       <div id="container">
         <div>
+          <NavBar />
           {this.loggedInLink()}
           {this.props.children}
         </div>
@@ -75,4 +77,5 @@ export default class App extends React.Component {
 }
 
 App.propTypes = propTypes;
+
 

@@ -7,13 +7,10 @@ import SpotifyTest from './components/SpotifyTest.jsx';
 
 ReactDOM.render((
   <Router history={hashHistory} >
-    <Route path="/">
-      <IndexRoute component={App}>
-        <Route path="login" component={UserAuth} />
-      </IndexRoute>
+    <Route path="/" component={App}>
+      <Route path="login" component={UserAuth} />
       <Route path="spotify" component={SpotifyTest} />
     </Route>
-
   </Router>
   ), document.querySelector('#root'));
 
