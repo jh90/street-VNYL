@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 export default class NavBar extends React.Component {
   render () {
@@ -12,7 +13,7 @@ export default class NavBar extends React.Component {
             <a href="#">SongLists</a>
             <a href="#">Discover</a>
             <a href="#">How to Use</a>
-            <a href="#"> Sign In / Register</a>
+            <Link to="/login" id="login">Sign-In / Register</Link>
           </div>
         </nav>
       </div>

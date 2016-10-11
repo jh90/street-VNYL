@@ -16,9 +16,10 @@ export default class App extends React.Component {
     this.state = {
       user: '',
       data: [],
-      loggedIn: false,
+
     };
   }
+
   loggedInLink() {
       return (
         <div>
@@ -28,11 +29,21 @@ export default class App extends React.Component {
         </div>
       );
   }
+  // loggedInLink() {
+  //     return (
+  //       <div>
+  //         <Link to="/login" id="login">Login</Link>
+  //       </div>
+  //     );
+  // }
   render() {
     return (
       <div id="container">
         <div>
           {this.loggedInLink()}
+
+          <NavBar />
+
           {this.props.children}
         </div>
         <div className="map">
@@ -78,4 +89,5 @@ export default class App extends React.Component {
 }
 
 App.propTypes = propTypes;
+
 
