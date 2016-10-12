@@ -1,4 +1,5 @@
 import React from 'react';
+import Modal from 'react-modal';
 
 const propTypes = {
   handleSubmit: React.PropTypes.func,
@@ -32,17 +33,17 @@ export default class UserForm extends React.Component {
             type="text"
             name="email"
             value={this.state.email}
-            placeholder="email..."
+            placeholder="email"
             onChange={this.handleInputChange}
           />
           <input
             type="password"
             name="password"
             value={this.state.pasword}
-            placeholder="password..."
+            placeholder="password"
             onChange={this.handleInputChange}
           />
-          <input type="submit" onClick={this.handleSubmit} value={this.props.buttonText} />
+          <input className="button" type="submit" onClick={this.handleSubmit} value={this.props.buttonText} />
         </form>
       </div>
     );

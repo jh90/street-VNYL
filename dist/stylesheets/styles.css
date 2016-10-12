@@ -39,6 +39,30 @@ nav a#hamburger {
   padding: 1em;
 }
 
+input {
+  font-size: 15px;
+  text-align: center;
+  width: 15%;
+  display: block;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: 550px;
+  margin-bottom: .5rem;
+  font-family: 'Kalam', cursive;
+}
+
+.button {
+  color: black;
+  background-color: #1DB954;
+  height: 35px;
+  width: 6%;
+  margin-left: 615px;
+  text-align: center;
+  display: block;
+  box-sizing: border-box;
+  font-family: 'Kalam', cursive;
+}
+
 #song-list {
   color: white;
 }
