@@ -39,6 +39,26 @@ nav a#hamburger {
   padding: 1em;
 }
 
+input {
+  font-style: italic;
+  font-size: 1rem;
+  text-align: center;
+  width: 20%;
+  display: inline-block;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 1rem;
+}
+
+.button {
+  color: black;
+  background-color: #1DB954;
+  height: 2rem;
+  width: 9rem;
+  box-sizing: border-box;
+  border-radius: 10%;
+}
+
 #song-list {
   color: white;
 }
