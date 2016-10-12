@@ -1,1 +1,1 @@
-DELETE * FROM playlists WHERE id=$1;
+DELETE * FROM playlists WHERE lat=$1 AND lng=$2;

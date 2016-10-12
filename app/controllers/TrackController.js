@@ -1,7 +1,7 @@
 const trackDAO = require('../services/trackDAO.js');
 
 class TrackController {
-  static searchTracksByTitle (req, res) {
+  static searchTrackByTitle (req, res) {
     console.log(req.body);
     trackDAO.searchByTitle(req.body.title)
             .then((tracks) => {
@@ -21,7 +21,7 @@ class TrackController {
 
   static saveTrack (req, res) {
     const { title, artist, preview, playlistID } = req.body;
-    trackDAO.create({ title, artist, preview, playlistID });
+    trackDAO.create({ title, artist, preview, playlistID })
             .then(() => {
               res.status(200);
     });

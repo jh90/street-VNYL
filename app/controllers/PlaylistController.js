@@ -1,6 +1,12 @@
 const PlaylistDAO = require('../services/playlistDAO');
 
 class PlaylistController {
+  static getAllPlaylists (req, res) {
+    playlistDAO.getAll().then((playlists) => {
+      res.status(200).json(playlists);
+    });
+  }
+
   static getPlaylistByPosition (req, res) {
     const { lat, lng } = req.body;
     playlistDAO.findByCoordinates({ lat, lng })
