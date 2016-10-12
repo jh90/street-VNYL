@@ -2,14 +2,14 @@ const PlaylistDAO = require('../services/playlistDAO');
 
 class PlaylistController {
   static getAllPlaylists (req, res) {
-    playlistDAO.getAll().then((playlists) => {
+    PlaylistDAO.getAll().then((playlists) => {
       res.status(200).json(playlists);
     });
   }
 
   static getPlaylistByPosition (req, res) {
     const { lat, lng } = req.body;
-    playlistDAO.findByCoordinates({ lat, lng })
+    PlaylistDAO.findByCoordinates({ lat, lng })
                .then((playlist) => {
                   res.status(200).send(playlist);
     });
@@ -17,17 +17,19 @@ class PlaylistController {
   //playlist pos get arg
 
   static createPlaylist (req, res) {
-    const { title, lat, lng } = req.body;
-    playlistDAO.create({ title, lat, lng })
-               .then(() => {
-                  res.status(200);
-    });
+    console.log('controller hit');
+    const { uid, title, lat, lng } = req.body;
+    PlaylistDAO.create({ uid, title, lat, lng })
+               .then((playlist) => {
+                  console.log('response to controller');
+                  res.status(200).send(playlist);
+               });
   }
   //playlist title, pos send arg
 
   static deletePlaylist (req, res) {
     const { lat, lng } = req.body;
-    playlistDAO.deleteByCoordinates({ lat, lng })
+    PlaylistDAO.deleteByCoordinates({ lat, lng })
                .then(() => {
                   res.status(200);
     });

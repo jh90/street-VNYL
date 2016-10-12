@@ -1,5 +1,5 @@
 const db = require('../config/sql/db.js');
-const sql = require('../config/sql/sqlProvider.js');
+const sql = require('../config/sql/sqlProvider.js').playlists;
 const Playlist = require('../models/Playlist.js');
 
 class playlistDAO {
@@ -12,8 +12,9 @@ class playlistDAO {
   }
 
   static create (data) {
-    const { title, uid, lat, lng } = data;
-    return db.one(sql.create, [title, uid, lat, lng], (playlist) => new Playlist(playlist));
+    const { uid, title, lat, lng } = data;
+    console.log(uid);
+    return db.one(sql.create, [uid, title, lat, lng]);
   }
 
   static deleteByCoordinates (coordinates) {
