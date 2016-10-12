@@ -5,7 +5,7 @@ const sql = require('../config/sql/sqlProvider.js').tracks;
 const Track = require('../models/Track.js');
 
 class trackDAO {
-  static cleanTrackData {
+  static cleanTrackData (data) {
     const cleanTrackObject = {
       title: data.name,
       artist: data.artists[0].name,
