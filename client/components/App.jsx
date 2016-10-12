@@ -16,9 +16,9 @@ export default class App extends React.Component {
     this.state = {
       user: '',
       data: [],
-
     };
   }
+
   // loggedInLink() {
   //     return (
   //       <div>
@@ -31,7 +31,6 @@ export default class App extends React.Component {
       <div id="container">
         <div>
           <NavBar />
-
           {this.props.children}
         </div>
         <div className="map">
