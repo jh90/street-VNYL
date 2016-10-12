@@ -6,12 +6,14 @@ export default class CreatePlaylistForm extends React.Component {
     super();
     this.state = {
       doesthisshitwork: false,
+      playlists: [],
     };
     this.makeNewPlaylist = this.makeNewPlaylist.bind(this);
+    this.getAllPlaylists = this.getAllPlaylists.bind(this);
   }
 
   componentDidMount () {
-    this.makeNewPlaylist();
+    this.getAllPlaylists();
   }
 
   makeNewPlaylist () {
@@ -19,6 +21,19 @@ export default class CreatePlaylistForm extends React.Component {
     const playlistDetails = {uid: 1, title: 'Test Drive', lat: 5.4, lng: 4.3};
     request.post('/api/playlists')
            .send(playlistDetails)
+           .then((response) => {
+              console.log('got response');
+              console.log(response);
+              this.setState({
+                doesthisshitwork: true,
+              });
+           });
+  }
+
+  getAllPlaylists () {
+    console.log('method initiates');
+    const metaList = [];
+    request.get('/api/playlists')
            .then((response) => {
               console.log('got response');
               console.log(response);

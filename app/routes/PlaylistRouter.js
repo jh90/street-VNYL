@@ -5,6 +5,7 @@ const PlaylistController = require('../controllers/PlaylistController');
 
 router.get('/', PlaylistController.getAllPlaylists);
 // db call
+// CONNECTED
 router.get('/byPosition', PlaylistController.getPlaylistByPosition);
 //db call
 router.post('/', PlaylistController.createPlaylist);

@@ -2,7 +2,10 @@ const PlaylistDAO = require('../services/playlistDAO');
 
 class PlaylistController {
   static getAllPlaylists (req, res) {
+    console.log('controller hit');
     PlaylistDAO.getAll().then((playlists) => {
+      console.log('response from DAO');
+      console.log(playlists);
       res.status(200).json(playlists);
     });
   }
@@ -17,11 +20,9 @@ class PlaylistController {
   //playlist pos get arg
 
   static createPlaylist (req, res) {
-    console.log('controller hit');
     const { uid, title, lat, lng } = req.body;
     PlaylistDAO.create({ uid, title, lat, lng })
                .then((playlist) => {
-                  console.log('response to controller');
                   res.status(200).send(playlist);
                });
   }

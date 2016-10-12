@@ -36009,18 +36009,50 @@
 	  function CreatePlaylistForm() {
 	    _classCallCheck(this, CreatePlaylistForm);
 	
-	    return _possibleConstructorReturn(this, (CreatePlaylistForm.__proto__ || Object.getPrototypeOf(CreatePlaylistForm)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (CreatePlaylistForm.__proto__ || Object.getPrototypeOf(CreatePlaylistForm)).call(this));
+	
+	    _this.state = {
+	      doesthisshitwork: false,
+	      playlists: []
+	    };
+	    _this.makeNewPlaylist = _this.makeNewPlaylist.bind(_this);
+	    _this.getAllPlaylists = _this.getAllPlaylists.bind(_this);
+	    return _this;
 	  }
 	
 	  _createClass(CreatePlaylistForm, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.getAllPlaylists();
+	    }
+	  }, {
 	    key: 'makeNewPlaylist',
 	    value: function makeNewPlaylist() {
+	      var _this2 = this;
+	
 	      console.log('method initiates');
 	      var playlistDetails = { uid: 1, title: 'Test Drive', lat: 5.4, lng: 4.3 };
 	      _superagent2.default.post('/api/playlists').send(playlistDetails).then(function (response) {
 	        console.log('got response');
 	        console.log(response);
-	        return true;
+	        _this2.setState({
+	          doesthisshitwork: true
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'getAllPlaylists',
+	    value: function getAllPlaylists() {
+	      var _this3 = this;
+	
+	      console.log('method initiates');
+	      var metaList = [];
+	      _superagent2.default.get('/api/playlists').then(function (response) {
+	        console.log('got response');
+	        console.log(response);
+	        _this3.setState({
+	          doesthisshitwork: true
+	        });
 	      });
 	    }
 	  }, {
@@ -36029,7 +36061,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        this.makeNewPlaylist() ? _react2.default.createElement(
+	        this.state.doesthisshitwork ? _react2.default.createElement(
 	          'h1',
 	          null,
 	          'WE GOT SOMETHING'

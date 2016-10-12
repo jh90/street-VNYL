@@ -4,7 +4,8 @@ const Playlist = require('../models/Playlist.js');
 
 class playlistDAO {
   static getAll () {
-    return db.all(sql.all, [], (row) => new Playlist(row));
+    console.log('DAO hit');
+    return db.map(sql.all, [], (row) => new Playlist(row));
   }
 
   static findByCoordinates ({ lat, lng }) {
