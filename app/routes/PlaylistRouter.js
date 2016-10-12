@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const PlaylistController = require('PlaylistController');
+const PlaylistController = require('../controllers/PlaylistController');
 
-// router.get('/playlists', PlaylistController.getAllPlaylists);
+router.get('/playlists', PlaylistController.getAllPlaylists);
 // db call
 router.get('/playlists/byPosition', PlaylistController.getPlaylistByPosition);
 //db call

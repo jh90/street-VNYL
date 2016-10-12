@@ -19,7 +19,11 @@ const sqlProvider = {
     create: sql('./playlist/create.sql'),
     delete: sql('./playlist/delete.sql'),
   },
-  //tracks?
+  tracks: {
+    find: sql('./track/find.sql'),
+    create: sql('./track/create.sql'),
+    delete: sql('./track/delete.sql'),
+  }
 };
 
 module.exports = sqlProvider;

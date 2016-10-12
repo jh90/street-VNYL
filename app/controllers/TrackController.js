@@ -21,7 +21,7 @@ class TrackController {
 
   static saveTrack (req, res) {
     const { title, artist, preview, playlistID } = req.body;
-    trackDAO.create({ title, artist, preview, playlistID });
+    trackDAO.create({ title, artist, preview, playlistID })
             .then(() => {
               res.status(200);
     });

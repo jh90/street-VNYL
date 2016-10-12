@@ -64,7 +64,7 @@
 	
 	var _UserAuth2 = _interopRequireDefault(_UserAuth);
 	
-	var _SpotifyTest = __webpack_require__(291);
+	var _SpotifyTest = __webpack_require__(292);
 	
 	var _SpotifyTest2 = _interopRequireDefault(_SpotifyTest);
 	
@@ -27134,6 +27134,10 @@
 	
 	var _UserAuth2 = _interopRequireDefault(_UserAuth);
 	
+	var _NavBar = __webpack_require__(291);
+	
+	var _NavBar2 = _interopRequireDefault(_NavBar);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27156,26 +27160,21 @@
 	
 	    _this.state = {
 	      user: '',
-	      data: [],
-	      loggedIn: false
+	      data: []
 	    };
 	    return _this;
 	  }
 	
+	  // loggedInLink() {
+	  //     return (
+	  //       <div>
+	  //         <Link to="/login" id="login">Login</Link>
+	  //       </div>
+	  //     );
+	  // }
+	
+	
 	  _createClass(App, [{
-	    key: 'loggedInLink',
-	    value: function loggedInLink() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { to: '/login', id: 'login' },
-	          'Login'
-	        )
-	      );
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -27184,7 +27183,7 @@
 	        _react2.default.createElement(
 	          'div',
 	          null,
-	          this.loggedInLink(),
+	          _react2.default.createElement(_NavBar2.default, null),
 	          this.props.children
 	        ),
 	        _react2.default.createElement(
@@ -33732,11 +33731,100 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactRouter = __webpack_require__(172);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var NavBar = function (_React$Component) {
+	  _inherits(NavBar, _React$Component);
+	
+	  function NavBar() {
+	    _classCallCheck(this, NavBar);
+	
+	    return _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).apply(this, arguments));
+	  }
+	
+	  _createClass(NavBar, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { id: 'header' },
+	        _react2.default.createElement('img', { id: 'logo', src: '../images/whiteLogo.png' }),
+	        _react2.default.createElement(
+	          'nav',
+	          null,
+	          _react2.default.createElement(
+	            'a',
+	            { href: '#', id: 'hamburger' },
+	            _react2.default.createElement('img', { src: '../images/hamburger.png' })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { id: 'inner-nav' },
+	            _react2.default.createElement(
+	              'a',
+	              { href: '#' },
+	              'Locations'
+	            ),
+	            _react2.default.createElement(
+	              'a',
+	              { href: '#' },
+	              'SongLists'
+	            ),
+	            _react2.default.createElement(
+	              'a',
+	              { href: '#' },
+	              'Discover'
+	            ),
+	            _react2.default.createElement(
+	              'a',
+	              { href: '#' },
+	              'How to Use'
+	            ),
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/login', id: 'login' },
+	              'Sign-In / Register'
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return NavBar;
+	}(_react2.default.Component);
+	
+	exports.default = NavBar;
+
+/***/ },
+/* 292 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
 	var _superagent = __webpack_require__(282);
 	
 	var _superagent2 = _interopRequireDefault(_superagent);
 	
-	var _TrackListElement = __webpack_require__(292);
+	var _TrackListElement = __webpack_require__(293);
 	
 	var _TrackListElement2 = _interopRequireDefault(_TrackListElement);
 	
@@ -33846,7 +33934,7 @@
 	exports.default = SpotifyTest;
 
 /***/ },
-/* 292 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
