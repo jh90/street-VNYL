@@ -40,23 +40,27 @@ nav a#hamburger {
 }
 
 input {
-  font-style: italic;
-  font-size: 1rem;
+  font-size: 15px;
   text-align: center;
-  width: 20%;
-  display: inline-block;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  margin-bottom: 1rem;
+  width: 15%;
+  display: block;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: 550px;
+  margin-bottom: .5rem;
+  font-family: 'Kalam', cursive;
 }
 
 .button {
   color: black;
   background-color: #1DB954;
-  height: 2rem;
-  width: 9rem;
+  height: 35px;
+  width: 6%;
+  margin-left: 615px;
+  text-align: center;
+  display: block;
   box-sizing: border-box;
-  border-radius: 10%;
+  font-family: 'Kalam', cursive;
 }
 
 #song-list {
