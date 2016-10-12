@@ -1,5 +1,5 @@
 body {
-font-family: 'Amatic SC', cursive;
+font-family: 'Kalam', cursive;
 margin: 0 auto;
 line-height: 2;
 max-width: 1500px;
@@ -9,7 +9,7 @@ background-color: black;
 #logo {
 height: 200px;
 width: auto;
-z-index: 8;
+padding-left: 35px;
 }
 
 nav {
@@ -23,7 +23,7 @@ nav #inner-nav a {
   padding: 0 .5em;
   text-decoration: none;
   color: white;
-  font-size: 25px;
+  font-size: 23px;
 }
 
 div #inner-nav {
@@ -31,7 +31,7 @@ div #inner-nav {
 }
 
 nav #inner-nav a:hover {
-color: #7D1C15;
+  color: #1DB954;
 }
 
 nav a#hamburger {
@@ -39,15 +39,13 @@ nav a#hamburger {
   padding: 1em;
 }
 
-.tagline {
-  font-family: 'Rock Salt', cursive;
-  text-align: center;
-  font-size: 25px;
-  margin: 0;
-  line-height: .5;
-  padding-bottom: 30px;
-  background-color: black;
+#song-list {
   color: white;
+}
+
+.player {
+
+
 }
 
 .map {
@@ -75,12 +73,6 @@ footer {
 @media only screen and (max-width: 768px) {
   body {
     font-size: 16px;
-  }
-
-  .tagline {
-    margin: 0;
-    font-size: 13px;
-    text-align: center;
   }
 
   nav {
@@ -118,10 +110,6 @@ footer {
 @media only screen and (max-width: 480px) {
   body {
     font-size: 16px;
-  }
-   .tagline {
-    margin: 0;
-    font-size: 15px;
   }
 }
 
