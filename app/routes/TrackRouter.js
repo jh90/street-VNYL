@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.get('/tracks/search', TrackController.searchTracksByTitle);
 // api call
+// CONNECTED
 router.get('/tracks/byPlaylist/:id', TrackController.getTracksByPlaylistID);
 // db call
 router.post('/tracks', TrackController.saveTrack);

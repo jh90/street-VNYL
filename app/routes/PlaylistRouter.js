@@ -9,6 +9,7 @@ router.get('/byPosition', PlaylistController.getPlaylistByPosition);
 //db call
 router.post('/', PlaylistController.createPlaylist);
 //db call
+// CONNECTED
 router.delete('/', PlaylistController.deletePlaylist);
 //db call
 
