@@ -5,6 +5,7 @@ class TrackController {
     const { input } = req.query;
     trackDAO.searchBy(input)
             .then((tracks) => {
+               console.log(tracks);
                res.status(200).json(tracks);
     });
   }

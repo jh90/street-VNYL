@@ -5,25 +5,26 @@ const sql = require('../config/sql/sqlProvider.js').tracks;
 const Track = require('../models/Track.js');
 
 class trackDAO {
-  static cleanTrackData (data) {
-    const cleanTrackObject = {
-      title: data.name,
-      artist: data.artists[0].name,
-      previewURL: data.preview_url,
-    };
-    return cleanTrackObject;
-  }
-
   static searchBy (input) {
     const trackList = [];
-    const baseURL = `https://api.spotify.com/v1/search?q=${input}&type=track&limit=25`;
+    const cleanInput = input.replace(' ', '%20');
+    console.log(cleanInput);
+    const baseURL = `https://api.spotify.com/v1/search?q=${cleanInput}&type=track&limit=25`;
     return request.get(baseURL).then((response) => {
-      const returnedTracks = response.body.tracks.items;
-      returnedTracks.forEach((track) => {
-        const cleanTrack = this.cleanTrackData(track);
-        trackList.push(cleanTrack);
+      console.log('response from API');
+      const trackData = response.body.tracks.items;
+      console.log(trackData);
+      const cleanTrackData = trackData.map((track) => {
+        const cleanTrack = {
+          title: track.name,
+          artist: track.artists[0].name,
+          previewURL: track.preview_url,
+        };
+        console.log(cleanTrack);
+        return cleanTrack;
       });
-      return trackList;
+      console.log(cleanTrackData);
+      return cleanTrackData;
     });
   }
 

@@ -17,10 +17,11 @@ export default class SpotifyTest extends React.Component {
 
   getTracks () {
     const searchInput = this.state.keyword;
+    const cleanSearchInput = searchInput.replace(' ', '%20');
+    console.log(cleanSearchInput);
     const trackList = [];
-    request.get('api/tracks/search').then((response) => {
-      console.log(response);
-      response.forEach((track) => {
+    request.get(`api/tracks/search?input=${cleanSearchInput}`).then((response) => {
+      response.body.forEach((track) => {
         trackList.push(track);
       });
       this.setState({

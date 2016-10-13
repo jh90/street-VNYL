@@ -3,12 +3,12 @@ const TrackController = require('../controllers/TrackController.js');
 
 const router = express.Router();
 
-router.get('/search', TrackController.searchTracksByTitle);
+router.get('/search', TrackController.searchTracksByInput);
 // api call
 // CONNECTED
 router.get('/byPlaylist/:id', TrackController.getTracksByPlaylistID);
 // db call
-
+//CONNECTED
 router.post('/', TrackController.saveTrack);
 // db call
 // CONNECTED
