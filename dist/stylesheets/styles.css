@@ -85,7 +85,7 @@ input {
 }
 
 #song-list {
-  color: white;
+  color: black;
 }
 
 /*.player {
@@ -204,6 +204,18 @@ input {
   overflow-y: scroll;
 }
 
+.playlistModal {
+  background-color: white;
+  width: 50%;
+  height: 600px;
+  overflow: hidden;
+  margin: 0 auto;
+  text-align: center;
+  /*align-items: center;*/
+  margin-top: 50px;
+  overflow-x: auto;
+  overflow-y: scroll;
+}
 
 
 
