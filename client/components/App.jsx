@@ -1,9 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { GoogleMap, GoogleMapLoader, Marker, SearchBox } from 'react-google-maps';
-import request from 'superagent';
-import cookie from 'react-cookie';
-import UserAuth from './UserAuth.jsx';
 import NavBar from './NavBar.jsx';
 
 const propTypes = {
@@ -18,14 +15,6 @@ export default class App extends React.Component {
       data: [],
     };
   }
-
-  // loggedInLink() {
-  //     return (
-  //       <div>
-  //         <Link to="/login" id="login">Login</Link>
-  //       </div>
-  //     );
-  // }
   render() {
     return (
       <div id="container">
@@ -53,19 +42,12 @@ export default class App extends React.Component {
                 defaultZoom={12}
                 defaultCenter={{ lat: 40.78, lng: -73.96 }}
               >
-                {
-                  this.state.data.map((place, idx) => {
-                    console.log(place.long);
-                    return (
-                      <Marker
-                        position={{
-                          lat: place.lat,
-                          lng: place.long,
-                        }}
-                      />
-                    );
-                  })
-                }
+                <Marker
+                  position={{
+                    lat: 5.4,
+                    lng: 4.3,
+                  }}
+                />
               </GoogleMap>
             }
           />
@@ -77,4 +59,16 @@ export default class App extends React.Component {
 
 App.propTypes = propTypes;
 
-
+// {
+//                   this.state.data.map((place, idx) => {
+//                     console.log(place.long);
+//                     return (
+//                       <Marker
+//                         position={{
+//                           lat: place.lat,
+//                           lng: place.long,
+//                         }}
+//                       />
+//                     );
+//                   })
+//                 }

@@ -3,13 +3,16 @@ const TrackController = require('../controllers/TrackController.js');
 
 const router = express.Router();
 
-router.get('/tracks/search', TrackController.searchTracksByTitle);
+router.get('/search', TrackController.searchTracksByTitle);
 // api call
-router.get('/tracks/byPlaylist/:id', TrackController.getTracksByPlaylistID);
+// CONNECTED
+router.get('/byPlaylist/:id', TrackController.getTracksByPlaylistID);
 // db call
-router.post('/tracks', TrackController.saveTrack);
+
+router.post('/', TrackController.saveTrack);
 // db call
-router.delete('/tracks/:id', TrackController.deleteTrack);
+// CONNECTED
+router.delete('/:id', TrackController.deleteTrack);
 // db call
 
 module.exports = router;
