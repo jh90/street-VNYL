@@ -7,7 +7,7 @@ background-color: black;
 }
 
 #logo {
-height: 200px;
+height: 220px;
 width: auto;
 padding-left: 35px;
 }
@@ -17,6 +17,7 @@ nav {
   width: 55%;
   text-align: right;
   padding: .5em 0;
+  margin-right: 15px;
 }
 
 nav #inner-nav a {
@@ -40,9 +41,9 @@ nav a#hamburger {
 }
 
 input {
-  font-size: 15px;
+  font-size: 16px;
   text-align: center;
-  width: 15%;
+  width: 23%;
   display: block;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -51,26 +52,51 @@ input {
   font-family: 'Kalam', cursive;
 }
 
-.button {
+.button, #searchButton, #submit, #logoutButton {
   color: black;
   background-color: #1DB954;
   height: 35px;
   width: 6%;
-  margin-left: 615px;
+  margin-left: 640px;
   text-align: center;
   display: block;
   box-sizing: border-box;
+  border-radius: 5px;
   font-family: 'Kalam', cursive;
+}
+
+.buttons {
+   color: black;
+  background-color: #1DB954;
+  height: 35px;
+  width: 6%;
+}
+
+.modal {
+  background-color: black;
+  margin-top: 165px;
+  height: 45%;
+  width: 100%;
+  align-items: center;
+}
+
+
+#close {
+  color: black;
+  background-color: #1DB954;
+  width: 6%;
+  border-radius: 5px;
+  font-size: 15px;
+  font-family: 'Kalam', cursive;
+  margin: 25px;
 }
 
 #song-list {
   color: white;
 }
 
-.player {
-
-
-}
+/*.player {
+}*/
 
 .map {
   height: 90%;
@@ -80,7 +106,7 @@ input {
   filter: grayscale(90%)
 }
 
-footer {
+#footer {
   background-color: black;
   color: white;
   padding: 25px;
@@ -136,7 +162,6 @@ footer {
     font-size: 16px;
   }
 }
-
 
 
 
