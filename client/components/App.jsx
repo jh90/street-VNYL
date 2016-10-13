@@ -15,6 +15,18 @@ export default class App extends React.Component {
       data: [],
     };
   }
+
+  componentDidMount () {
+    this.getAllPlaylists();
+  }
+
+  getAllPlaylists () {
+    request.get('/api/playlists')
+           .then((response) => {
+              console.log(response);
+           });
+  }
+
   render() {
     return (
       <div id="container">
