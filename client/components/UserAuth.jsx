@@ -5,6 +5,10 @@ import request from 'superagent';
 import cookie from 'react-cookie';
 import UserForm from './UserForm.jsx';
 
+const propTypes = {
+  closeModal: React.PropTypes.func,
+};
+
 export default class UserAuth extends React.Component {
   constructor() {
     super();
@@ -70,14 +74,14 @@ export default class UserAuth extends React.Component {
     if (this.state.token) {
       userDisplayElement = (
         <div>
-          <button onClick={this.signOut}>Log-Out</button>
+          <button id="logoutButton" onClick={this.signOut} closeModal={this.props.closeModal}>Log-Out</button>
         </div>
       );
     } else {
       userDisplayElement = (
-        <div>
-          <UserForm handleSubmit={this.logIn} buttonText="Log-In" />
-          <UserForm handleSubmit={this.signUp} buttonText="Register" />
+        <div id="user-form">
+          <UserForm handleSubmit={this.logIn} buttonText="Log-In" closeModal={this.props.closeModal} />
+          <UserForm handleSubmit={this.signUp} buttonText="Register" closeModal={this.props.closeModal} />
         </div>
       );
     }
@@ -91,40 +95,4 @@ export default class UserAuth extends React.Component {
   }
 }
 
-        // <div className="map">
-        //   <GoogleMapLoader
-        //     containerElement={
-        //       <div
-        //         {...this.props}
-        //         style={{
-        //          height: '100%',
-        //         }}
-        //       />
-        //     }
-        //     googleMapElement={
-        //       <GoogleMap
-        //         containerProps={{
-        //          style: {
-        //             height: '100%',
-        //           },
-        //         }}
-        //         defaultZoom={12}
-        //         defaultCenter={{ lat: 40.78, lng: -73.96 }}
-        //       >
-        //        {
-        //           this.state.data.map((place, idx) => {
-        //             console.log(place.long);
-        //             return (
-        //               <Marker
-        //                 position={{
-        //                   lat: place.lat,
-        //                   lng: place.long,
-        //                 }}
-        //               />
-        //             );
-        //           })
-        //       }
-        //       </GoogleMap>
-        //     }
-        //   />
-        // </div>
+UserAuth.propTypes = propTypes;
