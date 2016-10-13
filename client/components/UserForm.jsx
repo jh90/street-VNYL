@@ -39,9 +39,10 @@ export default class UserForm extends React.Component {
 
   render() {
     return (
-      <div id="login-form">
+      <div id="login-form" className="clearfix">
         <form onSubmit={this.handleSubmit}>
           <input
+                className="form"
                 type="text"
                 name="email"
                 value={this.state.email}
@@ -49,13 +50,14 @@ export default class UserForm extends React.Component {
                 onChange={this.handleInputChange}
           />
           <input
+                className="form"
                 type="password"
                 name="password"
                 value={this.state.pasword}
                 placeholder="password"
                 onChange={this.handleInputChange}
           />
-          <input type="submit" className="buttons" onClick={this.handleSubmit} value={this.props.buttonText} />
+          <input type="submit" className="button" onClick={this.handleSubmit} value={this.props.buttonText} />
         </form>
       </div>
     );
