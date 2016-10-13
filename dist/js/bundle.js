@@ -36017,13 +36017,14 @@
 	    };
 	    _this.makeNewPlaylist = _this.makeNewPlaylist.bind(_this);
 	    _this.getAllPlaylists = _this.getAllPlaylists.bind(_this);
+	    _this.saveTrack = _this.saveTrack.bind(_this);
 	    return _this;
 	  }
 	
 	  _createClass(CreatePlaylistForm, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      this.getPlaylistByPosition();
+	      this.saveTrack();
 	    }
 	  }, {
 	    key: 'makeNewPlaylist',
@@ -36064,6 +36065,40 @@
 	        console.log('got response');
 	        console.log(response);
 	        _this4.setState({
+	          doesthisshitwork: true
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'getTracksByPlaylistID',
+	    value: function getTracksByPlaylistID() {
+	      var _this5 = this;
+	
+	      console.log('method initiates');
+	      _superagent2.default.get('api/tracks/byPlaylist/:id').then(function (response) {
+	        console.log('got response');
+	        console.log(response);
+	        _this5.setState({
+	          doesthisshitwork: true
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'saveTrack',
+	    value: function saveTrack() {
+	      var _this6 = this;
+	
+	      console.log('method initiates');
+	      var trackDetails = {
+	        playlistID: 8,
+	        title: 'Hallelujah',
+	        artist: 'Rufus Wainwright',
+	        previewURL: 'i am url and u can too'
+	      };
+	      _superagent2.default.post('api/tracks').send(trackDetails).then(function (response) {
+	        console.log('got a response');
+	        console.log(response);
+	        _this6.setState({
 	          doesthisshitwork: true
 	        });
 	      });

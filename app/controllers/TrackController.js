@@ -20,11 +20,15 @@ class TrackController {
   //playlist id param
 
   static saveTrack (req, res) {
-    const { title, artist, preview, playlistID } = req.body;
-    trackDAO.create({ title, artist, preview, playlistID })
-            .then(() => {
-              res.status(200);
-    });
+    console.log('controller hit');
+    console.log(req.body);
+    const { playlistID, title, artist, previewURL } = req.body;
+    trackDAO.create({ playlistID, title, artist, previewURL })
+            .then((track) => {
+              console.log('DAO responded');
+              console.log(track);
+              res.status(200).json(track);
+            });
   }
   //track obj post arg
 
