@@ -44,7 +44,6 @@ input {
   font-size: 16px;
   text-align: center;
   width: 23%;
-  display: block;
   padding-top: 5px;
   padding-bottom: 5px;
   margin-left: 550px;
@@ -57,29 +56,23 @@ input {
   background-color: #1DB954;
   height: 35px;
   width: 6%;
-  margin-left: 640px;
+  margin-left: 675px;
   text-align: center;
   display: block;
-  box-sizing: border-box;
   border-radius: 5px;
+  margin-bottom: 20px;
+  margin-top: 10px;
   font-family: 'Kalam', cursive;
-}
-
-.buttons {
-  color: black;
-  background-color: #1DB954;
-  height: 35px;
-  width: 6%;
 }
 
 .modal {
   background-color: black;
+  padding-top: 75px;
   margin-top: 165px;
-  height: 45%;
+  height: 55%;
   width: 100%;
   align-items: center;
 }
-
 
 #close {
   color: black;
@@ -163,9 +156,11 @@ input {
   }
 }
 
-
-
-
+.clearfix:after {
+  clear: both;
+  display: block;
+  content: " ";
+}
 
 
 
