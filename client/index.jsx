@@ -9,7 +9,6 @@ import CreatePlaylistForm from './components/CreatePlaylistForm.jsx';
 ReactDOM.render((
   <Router history={hashHistory} >
     <Route path="/" component={App}>
-      <Route path="login" component={UserAuth} />
       <Route path="spotify" component={SpotifyTest} />
       <Route path="db-test" component={CreatePlaylistForm} />
     </Route>
