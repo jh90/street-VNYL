@@ -16,7 +16,7 @@ export default class UserAuth extends React.Component {
     this.signUp = this.signUp.bind(this);
     this.signOut = this.signOut.bind(this);
     this.sendPlaylist = this.sendPlaylist.bind(this);
-  };
+  }
   componentDidMount() {
     this.updateAuth();
     if (cookie.load('token')) {
@@ -73,14 +73,15 @@ export default class UserAuth extends React.Component {
           <button onClick={this.signOut}>Log-Out</button>
         </div>
       );
-    } else {
-      userDisplayElement = (
-        <div>
-          <UserForm handleSubmit={this.logIn} buttonText="Log-In" />
-          <UserForm handleSubmit={this.signUp} buttonText="Register" />
-        </div>
-      );
     }
+    // else {
+    //   userDisplayElement = (
+    //     <div>
+    //       <UserForm handleSubmit={this.logIn} buttonText="Log-In" />
+    //       <UserForm handleSubmit={this.signUp} buttonText="Register" />
+    //     </div>
+    //   );
+    // }
     return (
       <div id="user-display">
         <div>
@@ -91,40 +92,3 @@ export default class UserAuth extends React.Component {
   }
 }
 
-        // <div className="map">
-        //   <GoogleMapLoader
-        //     containerElement={
-        //       <div
-        //         {...this.props}
-        //         style={{
-        //          height: '100%',
-        //         }}
-        //       />
-        //     }
-        //     googleMapElement={
-        //       <GoogleMap
-        //         containerProps={{
-        //          style: {
-        //             height: '100%',
-        //           },
-        //         }}
-        //         defaultZoom={12}
-        //         defaultCenter={{ lat: 40.78, lng: -73.96 }}
-        //       >
-        //        {
-        //           this.state.data.map((place, idx) => {
-        //             console.log(place.long);
-        //             return (
-        //               <Marker
-        //                 position={{
-        //                   lat: place.lat,
-        //                   lng: place.long,
-        //                 }}
-        //               />
-        //             );
-        //           })
-        //       }
-        //       </GoogleMap>
-        //     }
-        //   />
-        // </div>

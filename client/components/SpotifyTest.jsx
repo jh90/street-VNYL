@@ -62,9 +62,9 @@ export default class SpotifyTest extends React.Component {
                  placeholder='track'
                  value={this.state.keyword}
                  onChange={this.handleChange} />
-          <input type='submit'
+          <input id='searchButton' type='submit'
                  onClick={this.handleSubmit}
-                 value='search'
+                 value='Search'
               />
         </form>
         <ul id="song-list">
