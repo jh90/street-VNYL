@@ -18,13 +18,10 @@ export default class CreatePlaylistForm extends React.Component {
   }
 
   makeNewPlaylist () {
-    console.log('method initiates');
     const playlistDetails = {uid: 1, title: 'Test Drive', lat: 5.4, lng: 4.3};
     request.post('/api/playlists')
            .send(playlistDetails)
            .then((response) => {
-              console.log('got response');
-              console.log(response);
               this.setState({
                 doesthisshitwork: true,
               });
@@ -32,11 +29,8 @@ export default class CreatePlaylistForm extends React.Component {
   }
 
   getAllPlaylists () {
-    console.log('method initiates');
     request.get('/api/playlists')
            .then((response) => {
-              console.log('got response');
-              console.log(response);
               this.setState({
                 doesthisshitwork: true,
               });
@@ -44,11 +38,8 @@ export default class CreatePlaylistForm extends React.Component {
   }
 
   getPlaylistByPosition () {
-    console.log('method initiates');
     request.get('api/playlists/byPosition?lat=1&lng=-1')
            .then((response) => {
-              console.log('got response');
-              console.log(response);
               this.setState({
                 doesthisshitwork: true,
               });
@@ -57,7 +48,8 @@ export default class CreatePlaylistForm extends React.Component {
 
   getTracksByPlaylistID () {
     console.log('method initiates');
-    request.get('api/tracks/byPlaylist/:id')
+    const playlistID = 8;
+    request.get(`api/tracks/byPlaylist/${playlistID}`)
            .then((response) => {
               console.log('got response');
               console.log(response);
@@ -68,7 +60,6 @@ export default class CreatePlaylistForm extends React.Component {
   }
 
   saveTrack () {
-    console.log('method initiates');
     const trackDetails = {
       playlistID: 8,
       title: 'Hallelujah',
@@ -78,8 +69,6 @@ export default class CreatePlaylistForm extends React.Component {
     request.post('api/tracks')
            .send(trackDetails)
            .then((response) => {
-              console.log('got a response');
-              console.log(response);
               this.setState({
                 doesthisshitwork: true,
               });

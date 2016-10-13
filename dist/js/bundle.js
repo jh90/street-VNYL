@@ -36031,11 +36031,8 @@
 	    value: function makeNewPlaylist() {
 	      var _this2 = this;
 	
-	      console.log('method initiates');
 	      var playlistDetails = { uid: 1, title: 'Test Drive', lat: 5.4, lng: 4.3 };
 	      _superagent2.default.post('/api/playlists').send(playlistDetails).then(function (response) {
-	        console.log('got response');
-	        console.log(response);
 	        _this2.setState({
 	          doesthisshitwork: true
 	        });
@@ -36046,10 +36043,7 @@
 	    value: function getAllPlaylists() {
 	      var _this3 = this;
 	
-	      console.log('method initiates');
 	      _superagent2.default.get('/api/playlists').then(function (response) {
-	        console.log('got response');
-	        console.log(response);
 	        _this3.setState({
 	          doesthisshitwork: true
 	        });
@@ -36060,10 +36054,7 @@
 	    value: function getPlaylistByPosition() {
 	      var _this4 = this;
 	
-	      console.log('method initiates');
 	      _superagent2.default.get('api/playlists/byPosition?lat=1&lng=-1').then(function (response) {
-	        console.log('got response');
-	        console.log(response);
 	        _this4.setState({
 	          doesthisshitwork: true
 	        });
@@ -36075,7 +36066,8 @@
 	      var _this5 = this;
 	
 	      console.log('method initiates');
-	      _superagent2.default.get('api/tracks/byPlaylist/:id').then(function (response) {
+	      var playlistID = 8;
+	      _superagent2.default.get('api/tracks/byPlaylist/' + playlistID).then(function (response) {
 	        console.log('got response');
 	        console.log(response);
 	        _this5.setState({
@@ -36088,7 +36080,6 @@
 	    value: function saveTrack() {
 	      var _this6 = this;
 	
-	      console.log('method initiates');
 	      var trackDetails = {
 	        playlistID: 8,
 	        title: 'Hallelujah',
@@ -36096,8 +36087,6 @@
 	        previewURL: 'i am url and u can too'
 	      };
 	      _superagent2.default.post('api/tracks').send(trackDetails).then(function (response) {
-	        console.log('got a response');
-	        console.log(response);
 	        _this6.setState({
 	          doesthisshitwork: true
 	        });
