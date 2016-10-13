@@ -11,10 +11,17 @@ class PlaylistController {
   }
 
   static getPlaylistByPosition (req, res) {
-    const { lat, lng } = req.body;
-    PlaylistDAO.findByCoordinates({ lat, lng })
+    console.log('controller hit');
+    const { lat, lng } = req.query;
+    const cleanLat = Number(lat);
+    const cleanLng = Number(lng);
+    console.log(cleanLat);
+    console.log(cleanLng);
+    PlaylistDAO.findByCoordinates({ cleanLat, cleanLng })
                .then((playlist) => {
-                  res.status(200).send(playlist);
+                  console.log('response from DAO');
+                  console.log(playlist);
+                  res.status(200).json(playlist);
     });
   }
   //playlist pos get arg

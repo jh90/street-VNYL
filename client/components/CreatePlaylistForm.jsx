@@ -13,7 +13,7 @@ export default class CreatePlaylistForm extends React.Component {
   }
 
   componentDidMount () {
-    this.getAllPlaylists();
+    this.getPlaylistByPosition();
   }
 
   makeNewPlaylist () {
@@ -32,8 +32,19 @@ export default class CreatePlaylistForm extends React.Component {
 
   getAllPlaylists () {
     console.log('method initiates');
-    const metaList = [];
     request.get('/api/playlists')
+           .then((response) => {
+              console.log('got response');
+              console.log(response);
+              this.setState({
+                doesthisshitwork: true,
+              });
+           });
+  }
+
+  getPlaylistByPosition () {
+    console.log('method initiates');
+    request.get('api/playlists/byPosition?lat=1&lng=-1')
            .then((response) => {
               console.log('got response');
               console.log(response);

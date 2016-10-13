@@ -8,8 +8,12 @@ class playlistDAO {
     return db.map(sql.all, [], (row) => new Playlist(row));
   }
 
-  static findByCoordinates ({ lat, lng }) {
-    return db.one(sql.find, [lat, lng], (playlist) => new Playlist(playlist));
+  static findByCoordinates (data) {
+    console.log(data);
+    const { cleanLat, cleanLng } = data;
+    console.log(cleanLat);
+    console.log(cleanLng);
+    return db.one(sql.find, [cleanLat, cleanLng], (playlist) => new Playlist(playlist));
   }
 
   static create (data) {

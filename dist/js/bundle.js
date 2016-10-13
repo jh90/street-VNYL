@@ -36023,7 +36023,7 @@
 	  _createClass(CreatePlaylistForm, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      this.getAllPlaylists();
+	      this.getPlaylistByPosition();
 	    }
 	  }, {
 	    key: 'makeNewPlaylist',
@@ -36046,11 +36046,24 @@
 	      var _this3 = this;
 	
 	      console.log('method initiates');
-	      var metaList = [];
 	      _superagent2.default.get('/api/playlists').then(function (response) {
 	        console.log('got response');
 	        console.log(response);
 	        _this3.setState({
+	          doesthisshitwork: true
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'getPlaylistByPosition',
+	    value: function getPlaylistByPosition() {
+	      var _this4 = this;
+	
+	      console.log('method initiates');
+	      _superagent2.default.get('api/playlists/byPosition?lat=1&lng=-1').then(function (response) {
+	        console.log('got response');
+	        console.log(response);
+	        _this4.setState({
 	          doesthisshitwork: true
 	        });
 	      });
