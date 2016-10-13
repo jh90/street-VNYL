@@ -60,7 +60,7 @@
 	
 	var _App2 = _interopRequireDefault(_App);
 	
-	var _UserAuth = __webpack_require__(289);
+	var _UserAuth = __webpack_require__(283);
 	
 	var _UserAuth2 = _interopRequireDefault(_UserAuth);
 	
@@ -80,7 +80,6 @@
 	  _react2.default.createElement(
 	    _reactRouter.Route,
 	    { path: '/', component: _App2.default },
-	    _react2.default.createElement(_reactRouter.Route, { path: 'login', component: _UserAuth2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'spotify', component: _SpotifyTest2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'db-test', component: _CreatePlaylistForm2.default })
 	  )
@@ -27127,19 +27126,7 @@
 	
 	var _reactGoogleMaps = __webpack_require__(236);
 	
-	var _superagent = __webpack_require__(282);
-	
-	var _superagent2 = _interopRequireDefault(_superagent);
-	
-	var _reactCookie = __webpack_require__(287);
-	
-	var _reactCookie2 = _interopRequireDefault(_reactCookie);
-	
-	var _UserAuth = __webpack_require__(289);
-	
-	var _UserAuth2 = _interopRequireDefault(_UserAuth);
-	
-	var _NavBar = __webpack_require__(311);
+	var _NavBar = __webpack_require__(282);
 	
 	var _NavBar2 = _interopRequireDefault(_NavBar);
 	
@@ -27169,15 +27156,6 @@
 	    };
 	    return _this;
 	  }
-	
-	  // loggedInLink() {
-	  //     return (
-	  //       <div>
-	  //         <Link to="/login" id="login">Login</Link>
-	  //       </div>
-	  //     );
-	  // }
-	
 	
 	  _createClass(App, [{
 	    key: 'render',
@@ -27211,14 +27189,11 @@
 	                defaultZoom: 12,
 	                defaultCenter: { lat: 40.78, lng: -73.96 }
 	              },
-	              this.state.data.map(function (place, idx) {
-	                console.log(place.long);
-	                return _react2.default.createElement(_reactGoogleMaps.Marker, {
-	                  position: {
-	                    lat: place.lat,
-	                    lng: place.long
-	                  }
-	                });
+	              _react2.default.createElement(_reactGoogleMaps.Marker, {
+	                position: {
+	                  lat: 5.4,
+	                  lng: 4.3
+	                }
 	              })
 	            )
 	          })
@@ -27234,6 +27209,20 @@
 	
 	
 	App.propTypes = propTypes;
+	
+	// {
+	//                   this.state.data.map((place, idx) => {
+	//                     console.log(place.long);
+	//                     return (
+	//                       <Marker
+	//                         position={{
+	//                           lat: place.lat,
+	//                           lng: place.long,
+	//                         }}
+	//                       />
+	//                     );
+	//                   })
+	//                 }
 
 /***/ },
 /* 236 */
@@ -31523,6 +31512,312 @@
 /* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(172);
+	
+	var _UserAuth = __webpack_require__(283);
+	
+	var _UserAuth2 = _interopRequireDefault(_UserAuth);
+	
+	var _reactModal = __webpack_require__(292);
+	
+	var _reactModal2 = _interopRequireDefault(_reactModal);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var NavBar = function (_React$Component) {
+	  _inherits(NavBar, _React$Component);
+	
+	  function NavBar(props) {
+	    _classCallCheck(this, NavBar);
+	
+	    var _this = _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).call(this, props));
+	
+	    _this.state = {
+	      modalIsOpen: false
+	    };
+	
+	    _this.openModal = _this.openModal.bind(_this);
+	    _this.closeModal = _this.closeModal.bind(_this);
+	    _this.afterOpenModal = _this.afterOpenModal.bind(_this);
+	    return _this;
+	  }
+	
+	  _createClass(NavBar, [{
+	    key: 'openModal',
+	    value: function openModal() {
+	      this.setState({ modalIsOpen: true });
+	    }
+	  }, {
+	    key: 'afterOpenModal',
+	    value: function afterOpenModal() {
+	      this.refs.subtitle.style.color = '#f00';
+	    }
+	  }, {
+	    key: 'closeModal',
+	    value: function closeModal() {
+	      this.setState({ modalIsOpen: false });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { id: 'header' },
+	        _react2.default.createElement('img', { id: 'logo', src: '../images/whiteLogo.png' }),
+	        _react2.default.createElement(
+	          'nav',
+	          null,
+	          _react2.default.createElement(
+	            'a',
+	            { href: '#', id: 'hamburger' },
+	            _react2.default.createElement('img', { src: '../images/hamburger.png' })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { id: 'inner-nav' },
+	            _react2.default.createElement(
+	              'a',
+	              { href: '#' },
+	              'Locations'
+	            ),
+	            _react2.default.createElement(
+	              'a',
+	              { href: '#' },
+	              'SongLists'
+	            ),
+	            _react2.default.createElement(
+	              'a',
+	              { href: '#' },
+	              'Discover'
+	            ),
+	            _react2.default.createElement(
+	              'a',
+	              { href: '#' },
+	              'How to Use'
+	            ),
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { onClick: this.openModal, to: '/login', id: 'login' },
+	              'Log-In/Log-Out'
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          _reactModal2.default,
+	          {
+	            className: 'modal',
+	            isOpen: this.state.modalIsOpen,
+	            onAfterOpen: this.afterOpenModal,
+	            onRequestClose: this.closeModal
+	          },
+	          _react2.default.createElement(_UserAuth2.default, { closeModal: this.closeModal })
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return NavBar;
+	}(_react2.default.Component);
+	
+	// NavBar.propTypes = propTypes;
+	
+	
+	exports.default = NavBar;
+
+/***/ },
+/* 283 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(172);
+	
+	var _reactGoogleMaps = __webpack_require__(236);
+	
+	var _superagent = __webpack_require__(284);
+	
+	var _superagent2 = _interopRequireDefault(_superagent);
+	
+	var _reactCookie = __webpack_require__(289);
+	
+	var _reactCookie2 = _interopRequireDefault(_reactCookie);
+	
+	var _UserForm = __webpack_require__(291);
+	
+	var _UserForm2 = _interopRequireDefault(_UserForm);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var propTypes = {
+	  closeModal: _react2.default.PropTypes.func
+	};
+	
+	var UserAuth = function (_React$Component) {
+	  _inherits(UserAuth, _React$Component);
+	
+	  function UserAuth() {
+	    _classCallCheck(this, UserAuth);
+	
+	    var _this = _possibleConstructorReturn(this, (UserAuth.__proto__ || Object.getPrototypeOf(UserAuth)).call(this));
+	
+	    _this.state = {
+	      playlists: []
+	    };
+	
+	    _this.logIn = _this.logIn.bind(_this);
+	    _this.signUp = _this.signUp.bind(_this);
+	    _this.signOut = _this.signOut.bind(_this);
+	    _this.sendPlaylist = _this.sendPlaylist.bind(_this);
+	    return _this;
+	  }
+	
+	  _createClass(UserAuth, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.updateAuth();
+	      if (_reactCookie2.default.load('token')) {
+	        this.getCurrentUserPlaylists();
+	      }
+	    }
+	  }, {
+	    key: 'getCurrentUserPlaylists',
+	    value: function getCurrentUserPlaylists() {
+	      var _this2 = this;
+	
+	      _superagent2.default.get('/api/playlists').then(function (response) {
+	        var playlists = response.body;
+	        _this2.setState({ playlists: playlists });
+	      }).catch(function () {
+	        _this2.updateAuth();
+	      });
+	    }
+	  }, {
+	    key: 'sendPlaylist',
+	    value: function sendPlaylist(_ref) {
+	      var _this3 = this;
+	
+	      var body = _ref.body;
+	
+	      _superagent2.default.post('/api/playlists').send({ body: body }).then(function () {
+	        _this3.getCurrentUserPlaylists();
+	      });
+	    }
+	  }, {
+	    key: 'signOut',
+	    value: function signOut() {
+	      var _this4 = this;
+	
+	      _superagent2.default.post('/api/signout').then(function () {
+	        return _this4.updateAuth();
+	      });
+	    }
+	  }, {
+	    key: 'updateAuth',
+	    value: function updateAuth() {
+	      this.setState({
+	        token: _reactCookie2.default.load('token')
+	      });
+	    }
+	  }, {
+	    key: 'logIn',
+	    value: function logIn(userDetails) {
+	      var _this5 = this;
+	
+	      _superagent2.default.post('/api/login').send(userDetails).then(function () {
+	        _this5.updateAuth();
+	        _this5.getCurrentUserPlaylists();
+	      });
+	    }
+	  }, {
+	    key: 'signUp',
+	    value: function signUp(userDetails) {
+	      var _this6 = this;
+	
+	      _superagent2.default.post('/api/signup').send(userDetails).then(function () {
+	        _this6.updateAuth();
+	        _this6.getCurrentUserPlaylists();
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var userDisplayElement = void 0;
+	      if (this.state.token) {
+	        userDisplayElement = _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'button',
+	            { id: 'logoutButton', onClick: this.signOut, closeModal: this.props.closeModal },
+	            'Log-Out'
+	          )
+	        );
+	      } else {
+	        userDisplayElement = _react2.default.createElement(
+	          'div',
+	          { id: 'user-form' },
+	          _react2.default.createElement(_UserForm2.default, { handleSubmit: this.logIn, buttonText: 'Log-In', closeModal: this.props.closeModal }),
+	          _react2.default.createElement(_UserForm2.default, { handleSubmit: this.signUp, buttonText: 'Register', closeModal: this.props.closeModal })
+	        );
+	      }
+	      return _react2.default.createElement(
+	        'div',
+	        { id: 'user-display' },
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          userDisplayElement
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return UserAuth;
+	}(_react2.default.Component);
+	
+	exports.default = UserAuth;
+	
+	
+	UserAuth.propTypes = propTypes;
+
+/***/ },
+/* 284 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/**
 	 * Root reference for iframes.
 	 */
@@ -31537,9 +31832,9 @@
 	  root = this;
 	}
 	
-	var Emitter = __webpack_require__(283);
-	var requestBase = __webpack_require__(284);
-	var isObject = __webpack_require__(285);
+	var Emitter = __webpack_require__(285);
+	var requestBase = __webpack_require__(286);
+	var isObject = __webpack_require__(287);
 	
 	/**
 	 * Noop.
@@ -31551,7 +31846,7 @@
 	 * Expose `request`.
 	 */
 	
-	var request = module.exports = __webpack_require__(286).bind(null, Request);
+	var request = module.exports = __webpack_require__(288).bind(null, Request);
 	
 	/**
 	 * Determine XHR.
@@ -32502,7 +32797,7 @@
 
 
 /***/ },
-/* 283 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -32671,13 +32966,13 @@
 
 
 /***/ },
-/* 284 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module of mixed-in functions shared between node and client code
 	 */
-	var isObject = __webpack_require__(285);
+	var isObject = __webpack_require__(287);
 	
 	/**
 	 * Clear previous timeout.
@@ -33049,7 +33344,7 @@
 
 
 /***/ },
-/* 285 */
+/* 287 */
 /***/ function(module, exports) {
 
 	/**
@@ -33068,7 +33363,7 @@
 
 
 /***/ },
-/* 286 */
+/* 288 */
 /***/ function(module, exports) {
 
 	// The node and browser modules expose versions of this with the
@@ -33106,10 +33401,10 @@
 
 
 /***/ },
-/* 287 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var cookie = __webpack_require__(288);
+	var cookie = __webpack_require__(290);
 	
 	if (typeof Object.assign != 'function') {
 	  Object.assign = function(target) {
@@ -33259,7 +33554,7 @@
 
 
 /***/ },
-/* 288 */
+/* 290 */
 /***/ function(module, exports) {
 
 	/*!
@@ -33421,7 +33716,7 @@
 
 
 /***/ },
-/* 289 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33436,213 +33731,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRouter = __webpack_require__(172);
-	
-	var _reactGoogleMaps = __webpack_require__(236);
-	
-	var _superagent = __webpack_require__(282);
-	
-	var _superagent2 = _interopRequireDefault(_superagent);
-	
-	var _reactCookie = __webpack_require__(287);
-	
-	var _reactCookie2 = _interopRequireDefault(_reactCookie);
-	
-	var _UserForm = __webpack_require__(290);
-	
-	var _UserForm2 = _interopRequireDefault(_UserForm);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var UserAuth = function (_React$Component) {
-	  _inherits(UserAuth, _React$Component);
-	
-	  function UserAuth() {
-	    _classCallCheck(this, UserAuth);
-	
-	    var _this = _possibleConstructorReturn(this, (UserAuth.__proto__ || Object.getPrototypeOf(UserAuth)).call(this));
-	
-	    _this.state = {
-	      playlists: []
-	    };
-	
-	    _this.logIn = _this.logIn.bind(_this);
-	    _this.signUp = _this.signUp.bind(_this);
-	    _this.signOut = _this.signOut.bind(_this);
-	    _this.sendPlaylist = _this.sendPlaylist.bind(_this);
-	    return _this;
-	  }
-	
-	  _createClass(UserAuth, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      this.updateAuth();
-	      if (_reactCookie2.default.load('token')) {
-	        this.getCurrentUserPlaylists();
-	      }
-	    }
-	  }, {
-	    key: 'getCurrentUserPlaylists',
-	    value: function getCurrentUserPlaylists() {
-	      var _this2 = this;
-	
-	      _superagent2.default.get('/api/playlists').then(function (response) {
-	        var playlists = response.body;
-	        _this2.setState({ playlists: playlists });
-	      }).catch(function () {
-	        _this2.updateAuth();
-	      });
-	    }
-	  }, {
-	    key: 'sendPlaylist',
-	    value: function sendPlaylist(_ref) {
-	      var _this3 = this;
-	
-	      var body = _ref.body;
-	
-	      _superagent2.default.post('/api/playlists').send({ body: body }).then(function () {
-	        _this3.getCurrentUserPlaylists();
-	      });
-	    }
-	  }, {
-	    key: 'signOut',
-	    value: function signOut() {
-	      var _this4 = this;
-	
-	      _superagent2.default.post('/api/signout').then(function () {
-	        return _this4.updateAuth();
-	      });
-	    }
-	  }, {
-	    key: 'updateAuth',
-	    value: function updateAuth() {
-	      this.setState({
-	        token: _reactCookie2.default.load('token')
-	      });
-	    }
-	  }, {
-	    key: 'logIn',
-	    value: function logIn(userDetails) {
-	      var _this5 = this;
-	
-	      _superagent2.default.post('/api/login').send(userDetails).then(function () {
-	        _this5.updateAuth();
-	        _this5.getCurrentUserPlaylists();
-	      });
-	    }
-	  }, {
-	    key: 'signUp',
-	    value: function signUp(userDetails) {
-	      var _this6 = this;
-	
-	      _superagent2.default.post('/api/signup').send(userDetails).then(function () {
-	        _this6.updateAuth();
-	        _this6.getCurrentUserPlaylists();
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var userDisplayElement = void 0;
-	      if (this.state.token) {
-	        userDisplayElement = _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(
-	            'button',
-	            { onClick: this.signOut },
-	            'Log-Out'
-	          )
-	        );
-	      } else {
-	        userDisplayElement = _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(_UserForm2.default, { handleSubmit: this.logIn, buttonText: 'Log-In' }),
-	          _react2.default.createElement(_UserForm2.default, { handleSubmit: this.signUp, buttonText: 'Register' })
-	        );
-	      }
-	      return _react2.default.createElement(
-	        'div',
-	        { id: 'user-display' },
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          userDisplayElement
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return UserAuth;
-	}(_react2.default.Component);
-	
-	// <div className="map">
-	//   <GoogleMapLoader
-	//     containerElement={
-	//       <div
-	//         {...this.props}
-	//         style={{
-	//          height: '100%',
-	//         }}
-	//       />
-	//     }
-	//     googleMapElement={
-	//       <GoogleMap
-	//         containerProps={{
-	//          style: {
-	//             height: '100%',
-	//           },
-	//         }}
-	//         defaultZoom={12}
-	//         defaultCenter={{ lat: 40.78, lng: -73.96 }}
-	//       >
-	//        {
-	//           this.state.data.map((place, idx) => {
-	//             console.log(place.long);
-	//             return (
-	//               <Marker
-	//                 position={{
-	//                   lat: place.lat,
-	//                   lng: place.long,
-	//                 }}
-	//               />
-	//             );
-	//           })
-	//       }
-	//       </GoogleMap>
-	//     }
-	//   />
-	// </div>
-	
-	
-	exports.default = UserAuth;
-
-/***/ },
-/* 290 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactModal = __webpack_require__(291);
+	var _reactModal = __webpack_require__(292);
 	
 	var _reactModal2 = _interopRequireDefault(_reactModal);
+	
+	var _reactRouter = __webpack_require__(172);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -33654,7 +33747,9 @@
 	
 	var propTypes = {
 	  handleSubmit: _react2.default.PropTypes.func,
-	  buttonText: _react2.default.PropTypes.string
+	  buttonText: _react2.default.PropTypes.string,
+	  openModal: _react2.default.PropTypes.func,
+	  closeModal: _react2.default.PropTypes.func
 	};
 	
 	var UserForm = function (_React$Component) {
@@ -33665,9 +33760,14 @@
 	
 	    var _this = _possibleConstructorReturn(this, (UserForm.__proto__ || Object.getPrototypeOf(UserForm)).call(this, props));
 	
-	    _this.state = { email: '', password: '' };
+	    _this.state = {
+	      email: '',
+	      password: ''
+	    };
+	
 	    _this.handleInputChange = _this.handleInputChange.bind(_this);
 	    _this.handleSubmit = _this.handleSubmit.bind(_this);
+	
 	    return _this;
 	  }
 	
@@ -33686,6 +33786,7 @@
 	    value: function handleSubmit(e) {
 	      e.preventDefault();
 	      this.props.handleSubmit(this.state);
+	      this.props.closeModal();
 	    }
 	  }, {
 	    key: 'render',
@@ -33710,7 +33811,7 @@
 	            placeholder: 'password',
 	            onChange: this.handleInputChange
 	          }),
-	          _react2.default.createElement('input', { className: 'button', type: 'submit', onClick: this.handleSubmit, value: this.props.buttonText })
+	          _react2.default.createElement('input', { type: 'submit', className: 'buttons', onClick: this.handleSubmit, value: this.props.buttonText })
 	        )
 	      );
 	    }
@@ -33725,25 +33826,25 @@
 	UserForm.propTypes = propTypes;
 
 /***/ },
-/* 291 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(292);
+	module.exports = __webpack_require__(293);
 	
 
 
 /***/ },
-/* 292 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(34);
-	var ExecutionEnvironment = __webpack_require__(293);
-	var ModalPortal = React.createFactory(__webpack_require__(294));
-	var ariaAppHider = __webpack_require__(309);
-	var elementClass = __webpack_require__(310);
+	var ExecutionEnvironment = __webpack_require__(294);
+	var ModalPortal = React.createFactory(__webpack_require__(295));
+	var ariaAppHider = __webpack_require__(310);
+	var elementClass = __webpack_require__(311);
 	var renderSubtreeIntoContainer = __webpack_require__(34).unstable_renderSubtreeIntoContainer;
-	var Assign = __webpack_require__(298);
+	var Assign = __webpack_require__(299);
 	
 	var SafeHTMLElement = ExecutionEnvironment.canUseDOM ? window.HTMLElement : {};
 	var AppElement = ExecutionEnvironment.canUseDOM ? document.body : {appendChild: function() {}};
@@ -33854,7 +33955,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 293 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -33899,14 +34000,14 @@
 
 
 /***/ },
-/* 294 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	var div = React.DOM.div;
-	var focusManager = __webpack_require__(295);
-	var scopeTab = __webpack_require__(297);
-	var Assign = __webpack_require__(298);
+	var focusManager = __webpack_require__(296);
+	var scopeTab = __webpack_require__(298);
+	var Assign = __webpack_require__(299);
 	
 	// so that our CSS is statically analyzable
 	var CLASS_NAMES = {
@@ -34117,10 +34218,10 @@
 
 
 /***/ },
-/* 295 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var findTabbable = __webpack_require__(296);
+	var findTabbable = __webpack_require__(297);
 	var modalElement = null;
 	var focusLaterElement = null;
 	var needToFocus = false;
@@ -34191,7 +34292,7 @@
 
 
 /***/ },
-/* 296 */
+/* 297 */
 /***/ function(module, exports) {
 
 	/*!
@@ -34247,10 +34348,10 @@
 
 
 /***/ },
-/* 297 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var findTabbable = __webpack_require__(296);
+	var findTabbable = __webpack_require__(297);
 	
 	module.exports = function(node, event) {
 	  var tabbable = findTabbable(node);
@@ -34272,7 +34373,7 @@
 
 
 /***/ },
-/* 298 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -34283,9 +34384,9 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseAssign = __webpack_require__(299),
-	    createAssigner = __webpack_require__(305),
-	    keys = __webpack_require__(301);
+	var baseAssign = __webpack_require__(300),
+	    createAssigner = __webpack_require__(306),
+	    keys = __webpack_require__(302);
 	
 	/**
 	 * A specialized version of `_.assign` for customizing assigned values without
@@ -34358,7 +34459,7 @@
 
 
 /***/ },
-/* 299 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -34369,8 +34470,8 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseCopy = __webpack_require__(300),
-	    keys = __webpack_require__(301);
+	var baseCopy = __webpack_require__(301),
+	    keys = __webpack_require__(302);
 	
 	/**
 	 * The base implementation of `_.assign` without support for argument juggling,
@@ -34391,7 +34492,7 @@
 
 
 /***/ },
-/* 300 */
+/* 301 */
 /***/ function(module, exports) {
 
 	/**
@@ -34429,7 +34530,7 @@
 
 
 /***/ },
-/* 301 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -34440,9 +34541,9 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var getNative = __webpack_require__(302),
-	    isArguments = __webpack_require__(303),
-	    isArray = __webpack_require__(304);
+	var getNative = __webpack_require__(303),
+	    isArguments = __webpack_require__(304),
+	    isArray = __webpack_require__(305);
 	
 	/** Used to detect unsigned integer values. */
 	var reIsUint = /^\d+$/;
@@ -34671,7 +34772,7 @@
 
 
 /***/ },
-/* 302 */
+/* 303 */
 /***/ function(module, exports) {
 
 	/**
@@ -34814,7 +34915,7 @@
 
 
 /***/ },
-/* 303 */
+/* 304 */
 /***/ function(module, exports) {
 
 	/**
@@ -35049,7 +35150,7 @@
 
 
 /***/ },
-/* 304 */
+/* 305 */
 /***/ function(module, exports) {
 
 	/**
@@ -35235,7 +35336,7 @@
 
 
 /***/ },
-/* 305 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -35246,9 +35347,9 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var bindCallback = __webpack_require__(306),
-	    isIterateeCall = __webpack_require__(307),
-	    restParam = __webpack_require__(308);
+	var bindCallback = __webpack_require__(307),
+	    isIterateeCall = __webpack_require__(308),
+	    restParam = __webpack_require__(309);
 	
 	/**
 	 * Creates a function that assigns properties of source object(s) to a given
@@ -35293,7 +35394,7 @@
 
 
 /***/ },
-/* 306 */
+/* 307 */
 /***/ function(module, exports) {
 
 	/**
@@ -35364,7 +35465,7 @@
 
 
 /***/ },
-/* 307 */
+/* 308 */
 /***/ function(module, exports) {
 
 	/**
@@ -35502,7 +35603,7 @@
 
 
 /***/ },
-/* 308 */
+/* 309 */
 /***/ function(module, exports) {
 
 	/**
@@ -35575,7 +35676,7 @@
 
 
 /***/ },
-/* 309 */
+/* 310 */
 /***/ function(module, exports) {
 
 	var _element = typeof document !== 'undefined' ? document.body : null;
@@ -35623,7 +35724,7 @@
 
 
 /***/ },
-/* 310 */
+/* 311 */
 /***/ function(module, exports) {
 
 	module.exports = function(opts) {
@@ -35688,95 +35789,6 @@
 
 
 /***/ },
-/* 311 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRouter = __webpack_require__(172);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var NavBar = function (_React$Component) {
-	  _inherits(NavBar, _React$Component);
-	
-	  function NavBar() {
-	    _classCallCheck(this, NavBar);
-	
-	    return _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).apply(this, arguments));
-	  }
-	
-	  _createClass(NavBar, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { id: 'header' },
-	        _react2.default.createElement('img', { id: 'logo', src: '../images/whiteLogo.png' }),
-	        _react2.default.createElement(
-	          'nav',
-	          null,
-	          _react2.default.createElement(
-	            'a',
-	            { href: '#', id: 'hamburger' },
-	            _react2.default.createElement('img', { src: '../images/hamburger.png' })
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { id: 'inner-nav' },
-	            _react2.default.createElement(
-	              'a',
-	              { href: '#' },
-	              'Locations'
-	            ),
-	            _react2.default.createElement(
-	              'a',
-	              { href: '#' },
-	              'SongLists'
-	            ),
-	            _react2.default.createElement(
-	              'a',
-	              { href: '#' },
-	              'Discover'
-	            ),
-	            _react2.default.createElement(
-	              'a',
-	              { href: '#' },
-	              'How to Use'
-	            ),
-	            _react2.default.createElement(
-	              _reactRouter.Link,
-	              { to: '/login', id: 'login' },
-	              'Sign-In / Register'
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return NavBar;
-	}(_react2.default.Component);
-	
-	exports.default = NavBar;
-
-/***/ },
 /* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -35792,7 +35804,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _superagent = __webpack_require__(282);
+	var _superagent = __webpack_require__(284);
 	
 	var _superagent2 = _interopRequireDefault(_superagent);
 	
@@ -35827,31 +35839,20 @@
 	  }
 	
 	  _createClass(SpotifyTest, [{
-	    key: 'cleanTrackData',
-	    value: function cleanTrackData(data) {
-	      var cleanTrackObject = {
-	        title: data.name,
-	        artist: data.artists[0].name,
-	        previewURL: data.preview_url
-	      };
-	      return cleanTrackObject;
-	    }
-	  }, {
 	    key: 'getTracks',
 	    value: function getTracks() {
 	      var _this2 = this;
 	
 	      var searchInput = this.state.keyword;
-	      var trackList = this.state.tracks;
-	      var baseURL = 'https://api.spotify.com/v1/search?q=' + searchInput + '&type=track&limit=10';
-	      _superagent2.default.get(baseURL).then(function (response) {
-	        var returnedTracks = response.body.tracks.items;
-	        returnedTracks.forEach(function (track) {
-	          var cleanTrack = _this2.cleanTrackData(track);
-	          trackList.push(cleanTrack);
-	          _this2.setState({
-	            tracks: trackList
-	          });
+	      var cleanSearchInput = searchInput.replace(' ', '%20');
+	      console.log(cleanSearchInput);
+	      var trackList = [];
+	      _superagent2.default.get('api/tracks/search?input=' + cleanSearchInput).then(function (response) {
+	        response.body.forEach(function (track) {
+	          trackList.push(track);
+	        });
+	        _this2.setState({
+	          tracks: trackList
 	        });
 	      });
 	    }
@@ -35884,9 +35885,9 @@
 	            placeholder: 'track',
 	            value: this.state.keyword,
 	            onChange: this.handleChange }),
-	          _react2.default.createElement('input', { type: 'submit',
+	          _react2.default.createElement('input', { id: 'searchButton', type: 'submit',
 	            onClick: this.handleSubmit,
-	            value: 'search'
+	            value: 'Search'
 	          })
 	        ),
 	        _react2.default.createElement(
@@ -35991,7 +35992,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _superagent = __webpack_require__(282);
+	var _superagent = __webpack_require__(284);
 	
 	var _superagent2 = _interopRequireDefault(_superagent);
 	
@@ -36037,6 +36038,11 @@
 	          doesthisshitwork: true
 	        });
 	      });
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.getAllPlaylists();
 	    }
 	  }, {
 	    key: 'getAllPlaylists',

@@ -15,27 +15,17 @@ export default class SpotifyTest extends React.Component {
     this.getTracks = this.getTracks.bind(this);
   }
 
-  cleanTrackData (data) {
-    const cleanTrackObject = {
-      title: data.name,
-      artist: data.artists[0].name,
-      previewURL: data.preview_url,
-    };
-    return cleanTrackObject;
-  }
-
   getTracks () {
     const searchInput = this.state.keyword;
-    const trackList = this.state.tracks;
-    const baseURL = `https://api.spotify.com/v1/search?q=${searchInput}&type=track&limit=10`;
-    request.get(baseURL).then((response) => {
-      const returnedTracks = response.body.tracks.items;
-      returnedTracks.forEach((track) => {
-        const cleanTrack = this.cleanTrackData(track);
-        trackList.push(cleanTrack);
-        this.setState({
-          tracks: trackList,
-        });
+    const cleanSearchInput = searchInput.replace(' ', '%20');
+    console.log(cleanSearchInput);
+    const trackList = [];
+    request.get(`api/tracks/search?input=${cleanSearchInput}`).then((response) => {
+      response.body.forEach((track) => {
+        trackList.push(track);
+      });
+      this.setState({
+        tracks: trackList,
       });
     });
   }
