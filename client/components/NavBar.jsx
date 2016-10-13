@@ -70,7 +70,7 @@ export default class NavBar extends React.Component {
             <a href="#">SongLists</a>
             <a href="#">Discover</a>
             <a href="#">How to Use</a>
-            <Link onClick={this.openModal} to="/login" id="login">Log-In/Log-Out</Link>
+            <Link onClick={this.openModal} to="/login" id="login">Log-In / Log-Out</Link>
           </div>
           <button id="playlist-button" onClick={this.openPlaylistModal}>Create Playlist!</button>
         </nav>
