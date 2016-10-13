@@ -28,6 +28,10 @@ export default class CreatePlaylistForm extends React.Component {
            });
   }
 
+  componentDidMount() {
+    this.getAllPlaylists();
+  }
+
   getAllPlaylists () {
     request.get('/api/playlists')
            .then((response) => {
