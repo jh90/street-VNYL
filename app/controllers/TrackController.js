@@ -1,8 +1,9 @@
 const trackDAO = require('../services/trackDAO.js');
 
 class TrackController {
-  static searchTracksByTitle (req, res) {
-    trackDAO.searchByTitle(req.body.title)
+  static searchTracksByInput (req, res) {
+    const { input } = req.query;
+    trackDAO.searchBy(input)
             .then((tracks) => {
                res.status(200).json(tracks);
     });

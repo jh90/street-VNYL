@@ -23,7 +23,7 @@ class trackDAO {
         const cleanTrack = this.cleanTrackData(track);
         trackList.push(cleanTrack);
       });
-      return new Track(cleanTrack);
+      return trackList;
     });
   }
 
