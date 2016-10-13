@@ -4,6 +4,8 @@ function authenticate(req, res, next) {
   const { token } = req.cookies;
 
   const nonRestricedRoutes = ['/signup', '/login', '/signout'];
+  //after validating backend calls check if tracks, playlists exclusions above can be deleted for
+  //logged in user
 
   if (nonRestricedRoutes.includes(req.path)) { return next(); }
   if (token && req.session.currentUser) {

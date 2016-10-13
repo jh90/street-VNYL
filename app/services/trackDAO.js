@@ -33,9 +33,14 @@ class trackDAO {
     return db.map(sql.find, [key, value], (track) => new Track);
   }
 
-  static create ({ title, artist, preview, playlistID }) {
-    return db.one(sql.create, [title, artist, preview, playlistID])
-             .then((track) => new Track(track));
+  static create (data) {
+    console.log('DAO hit');
+    const { playlistID, title, artist, previewURL } = data;
+    console.log(previewURL);
+    console.log(playlistID);
+    console.log(artist);
+    console.log(title);
+    return db.one(sql.create, [playlistID, title, artist, previewURL]);
   }
 
   static delete (id) {

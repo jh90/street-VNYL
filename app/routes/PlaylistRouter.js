@@ -3,13 +3,18 @@ const router = express.Router();
 
 const PlaylistController = require('../controllers/PlaylistController');
 
-router.get('/playlists', PlaylistController.getAllPlaylists);
+router.get('/', PlaylistController.getAllPlaylists);
 // db call
-router.get('/playlists/byPosition', PlaylistController.getPlaylistByPosition);
+// CONNECTED
+router.get('/byPosition', PlaylistController.getPlaylistByPosition);
 //db call
-router.post('/playlists', PlaylistController.createPlaylist);
+//CONNECTED
+router.post('/', PlaylistController.createPlaylist);
 //db call
-router.delete('/playlists', PlaylistController.deletePlaylist);
+// CONNECTED
+router.delete('/', PlaylistController.deletePlaylist);
 //db call
+
+//PRIORITIES COMPLETE
 
 module.exports = router;
