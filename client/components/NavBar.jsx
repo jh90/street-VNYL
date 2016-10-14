@@ -16,9 +16,7 @@ export default class NavBar extends React.Component {
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
-    this.openPlaylistModal = this.openPlaylistModal.bind(this);
-    this.closePlaylistModal = this.closePlaylistModal.bind(this);
-    this.afterOpenPlaylistModal = this.afterOpenPlaylistModal.bind(this);
+    this.handleCreateClick = this.handleCreateClick.bind(this);
     // this.openSearchModal = this.openSearchModal.bind(this);
     // this.closeSearchModal = this.closeSearchModal.bind(this);
     // this.afterOpenSearchModal = this.afterOpenSearchModal.bind(this);
@@ -36,16 +34,9 @@ export default class NavBar extends React.Component {
     this.setState({ modalIsOpen: false });
   }
 
-  openPlaylistModal() {
-    this.setState({ playlistModalOpen: true });
-  }
-
-  afterOpenPlaylistModal() {
-    this.refs.subtitle.style.color = '#f00';
-  }
-
-  closePlaylistModal() {
-    this.setState({ playlistModalOpen: false });
+  handleCreateClick () {
+    this.props.handleNewMarker();
+    this.props.openPlaylistModal();
   }
 
   // openSearchModal() {
@@ -72,7 +63,7 @@ export default class NavBar extends React.Component {
             <a href="#">How to Use</a>
             <Link onClick={this.openModal} to="/login" id="login">Log-In / Log-Out</Link>
           </div>
-          <button id="playlist-button" onClick={this.openPlaylistModal}>Create Playlist!</button>
+          <button id="playlist-button" onClick={this.handleCreateClick}>Create Playlist!</button>
         </nav>
         <Modal
           className="modal"
@@ -81,17 +72,6 @@ export default class NavBar extends React.Component {
           onRequestClose={this.closeModal}
         >
           <UserAuth closeModal={this.closeModal} />
-        </Modal>
-        <Modal
-          className="playlistModal"
-          isOpen={this.state.playlistModalOpen}
-          onAfterOpen={this.afterOpenPlaylistModal}
-          onRequestClose={this.closePlaylistModal}
-        >
-          <button id="closePlaylist" onClick={this.closePlaylistModal}>X</button>
-          <SpotifyTest />
-
-
         </Modal>
       </div>
     );

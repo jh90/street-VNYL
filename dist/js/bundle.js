@@ -27156,8 +27156,16 @@
 	
 	    _this.state = {
 	      user: '',
-	      positionData: []
+	      positionData: [],
+	      currentLocation: { lat: 40.78, lng: -73.96 },
+	      zoom: 12,
+	      playlistModalOpen: false
 	    };
+	    _this.getLocation = _this.getLocation.bind(_this);
+	    _this.createNewPlaylist = _this.createNewPlaylist.bind(_this);
+	    _this.openPlaylistModal = _this.openPlaylistModal.bind(_this);
+	    _this.closePlaylistModal = _this.closePlaylistModal.bind(_this);
+	    _this.afterOpenPlaylistModal = _this.afterOpenPlaylistModal.bind(_this);
 	    return _this;
 	  }
 	
@@ -27167,33 +27175,103 @@
 	      this.getAllPlaylists();
 	    }
 	  }, {
+	    key: 'getLocation',
+	    value: function getLocation() {
+	      var _this2 = this;
+	
+	      navigator.geolocation.getCurrentPosition(function (pos) {
+	        var currentLng = pos.coords.longitude;
+	        var currentLat = pos.coords.latitude;
+	        _this2.setState({
+	          currentLocation: { lat: currentLat, lng: currentLng },
+	          zoom: 16
+	        });
+	      });
+	    }
+	  }, {
 	    key: 'getAllPlaylists',
 	    value: function getAllPlaylists() {
-	      var _this2 = this;
+	      var _this3 = this;
 	
 	      _superagent2.default.get('/api/playlists').then(function (response) {
 	        var playlistArray = response.body;
 	        var playlistLocations = playlistArray.map(function (playlist) {
 	          var playlistLat = playlist.lat;
 	          var playlistLng = playlist.lng;
-	          return { lat: playlistLat, lng: playlistLng };
+	          var playlistTitle = playlist.title;
+	          return { lat: playlistLat, lng: playlistLng, title: playlistTitle };
 	        });
-	        _this2.setState({
+	        _this3.setState({
 	          positionData: playlistLocations
 	        });
 	      });
 	    }
 	  }, {
+	    key: 'createNewPlaylist',
+	    value: function createNewPlaylist(marker) {
+	      var _this4 = this;
+	
+	      _superagent2.default.post('/api/playlists').send(marker).then(function (response) {
+	        _this4.getAllPlaylists();
+	        return response.body.id;
+	      });
+	    }
+	  }, {
+	    key: 'dropMarker',
+	    value: function dropMarker(playlistTitle) {
+	      this.getLocation();
+	      var newMarker = {
+	        uid: 1,
+	        title: playlistTitle,
+	        lat: this.state.currentPosition.lat,
+	        lng: this.state.currentPosition.lng
+	      };
+	      var playlistID = this.createNewPlaylist(newMarker);
+	      return playlistID;
+	    }
+	  }, {
+	    key: 'openPlaylistModal',
+	    value: function openPlaylistModal() {
+	      this.setState({ playlistModalOpen: true });
+	    }
+	  }, {
+	    key: 'afterOpenPlaylistModal',
+	    value: function afterOpenPlaylistModal() {
+	      this.refs.subtitle.style.color = '#f00';
+	    }
+	  }, {
+	    key: 'closePlaylistModal',
+	    value: function closePlaylistModal() {
+	      this.setState({ playlistModalOpen: false });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this5 = this;
+	
 	      return _react2.default.createElement(
 	        'div',
 	        { id: 'container' },
 	        _react2.default.createElement(
 	          'div',
 	          null,
-	          _react2.default.createElement(_NavBar2.default, null),
+	          _react2.default.createElement(_NavBar2.default, { handleNewMarker: this.dropMarker, openPlaylistModal: this.openPlaylistModal }),
 	          this.props.children
+	        ),
+	        _react2.default.createElement(
+	          Modal,
+	          {
+	            className: 'playlistModal',
+	            isOpen: this.state.playlistModalOpen,
+	            onAfterOpen: this.afterOpenPlaylistModal,
+	            onRequestClose: this.closePlaylistModal
+	          },
+	          _react2.default.createElement(
+	            'button',
+	            { id: 'closePlaylist', onClick: this.closePlaylistModal },
+	            'X'
+	          ),
+	          _react2.default.createElement(SpotifyTest, null)
 	        ),
 	        _react2.default.createElement(
 	          'div',
@@ -27212,15 +27290,16 @@
 	                    height: '100%'
 	                  }
 	                },
-	                defaultZoom: 12,
-	                defaultCenter: { lat: 40.78, lng: -73.96 }
+	                defaultZoom: this.state.zoom,
+	                defaultCenter: this.state.currentLocation
 	              },
 	              this.state.positionData.map(function (coordinates) {
 	                return _react2.default.createElement(_reactGoogleMaps.Marker, {
 	                  position: {
 	                    lat: coordinates.lat,
 	                    lng: coordinates.lng
-	                  }
+	                  },
+	                  onClick: _this5.openPlaylistModal
 	                });
 	              })
 	            )
@@ -33176,9 +33255,6 @@
 	    _this.openModal = _this.openModal.bind(_this);
 	    _this.closeModal = _this.closeModal.bind(_this);
 	    _this.afterOpenModal = _this.afterOpenModal.bind(_this);
-	    _this.openPlaylistModal = _this.openPlaylistModal.bind(_this);
-	    _this.closePlaylistModal = _this.closePlaylistModal.bind(_this);
-	    _this.afterOpenPlaylistModal = _this.afterOpenPlaylistModal.bind(_this);
 	    // this.openSearchModal = this.openSearchModal.bind(this);
 	    // this.closeSearchModal = this.closeSearchModal.bind(this);
 	    // this.afterOpenSearchModal = this.afterOpenSearchModal.bind(this);
@@ -33201,19 +33277,10 @@
 	      this.setState({ modalIsOpen: false });
 	    }
 	  }, {
-	    key: 'openPlaylistModal',
-	    value: function openPlaylistModal() {
-	      this.setState({ playlistModalOpen: true });
-	    }
-	  }, {
-	    key: 'afterOpenPlaylistModal',
-	    value: function afterOpenPlaylistModal() {
-	      this.refs.subtitle.style.color = '#f00';
-	    }
-	  }, {
-	    key: 'closePlaylistModal',
-	    value: function closePlaylistModal() {
-	      this.setState({ playlistModalOpen: false });
+	    key: 'handleCreateClick',
+	    value: function handleCreateClick() {
+	      this.props.handleMarkerDrop();
+	      this.props.openPlaylistModal();
 	    }
 	
 	    // openSearchModal() {
@@ -33274,7 +33341,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'button',
-	            { id: 'playlist-button', onClick: this.openPlaylistModal },
+	            { id: 'playlist-button', onClick: this.handleCreateClick },
 	            'Create Playlist!'
 	          )
 	        ),
@@ -33287,21 +33354,6 @@
 	            onRequestClose: this.closeModal
 	          },
 	          _react2.default.createElement(_UserAuth2.default, { closeModal: this.closeModal })
-	        ),
-	        _react2.default.createElement(
-	          _reactModal2.default,
-	          {
-	            className: 'playlistModal',
-	            isOpen: this.state.playlistModalOpen,
-	            onAfterOpen: this.afterOpenPlaylistModal,
-	            onRequestClose: this.closePlaylistModal
-	          },
-	          _react2.default.createElement(
-	            'button',
-	            { id: 'closePlaylist', onClick: this.closePlaylistModal },
-	            'x'
-	          ),
-	          _react2.default.createElement(_SpotifyTest2.default, null)
 	        )
 	      );
 	    }
@@ -36018,12 +36070,12 @@
 	        null,
 	        _react2.default.createElement(
 	          'form',
-	          { id: 'search-form', onSubmit: this.handleSubmit },
+	          { onSubmit: this.handleSubmit },
 	          _react2.default.createElement('input', {
 	            id: 'searchText',
 	            type: 'text',
 	            name: 'keyword',
-	            placeholder: 'track',
+	            placeholder: 'Search for a Track or Artist',
 	            value: this.state.keyword,
 	            onChange: this.handleChange
 	          }),
@@ -36107,18 +36159,18 @@
 	        { id: "track-element" },
 	        _react2.default.createElement(
 	          "ul",
-	          { id: "artist-title-list" },
+	          null,
+	          _react2.default.createElement(
+	            "li",
+	            { id: "artist-name" },
+	            this.props.trackData.artist
+	          ),
 	          _react2.default.createElement(
 	            "li",
 	            { id: "song-title" },
 	            "\"",
 	            this.props.trackData.title,
 	            "\""
-	          ),
-	          _react2.default.createElement(
-	            "li",
-	            { id: "artist-name" },
-	            this.props.trackData.artist
 	          )
 	        ),
 	        _react2.default.createElement(
