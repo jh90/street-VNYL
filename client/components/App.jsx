@@ -21,7 +21,7 @@ export default class App extends React.Component {
     this.getAllPlaylists();
   }
 
-  requestLocation() {
+  getLocation() {
        navigator.geolocation.getCurrentPosition((pos) => {
            const currentLng = pos.coords.longitude;
            const currentLat = pos.coords.latitude;
@@ -30,7 +30,8 @@ export default class App extends React.Component {
    }
 
   dropMarker () {
-    const currentLocation = this.requestLocation();
+    const currentLocation = this.getLocation();
+
   }
 
   getAllPlaylists () {
