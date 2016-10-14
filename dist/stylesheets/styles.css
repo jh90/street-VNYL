@@ -6,6 +6,10 @@ max-width: 1500px;
 background-color: black;
 }
 
+#header {
+  padding-bottom: 35px;
+}
+
 #logo {
 height: 220px;
 width: auto;
@@ -40,7 +44,8 @@ nav a#hamburger {
   padding: 1em;
 }
 
-input {
+
+.form {
   font-size: 16px;
   text-align: center;
   width: 23%;
@@ -51,17 +56,56 @@ input {
   font-family: 'Kalam', cursive;
 }
 
-.button, #searchButton, #submit, #logoutButton {
+
+.button, #submit, #logoutButton {
   color: black;
   background-color: #1DB954;
   height: 35px;
   width: 6%;
+  font-size: 16px;
   margin-left: 675px;
   text-align: center;
   display: block;
   border-radius: 5px;
   margin-bottom: 20px;
   margin-top: 10px;
+  font-family: 'Kalam', cursive;
+}
+
+#searchText {
+  font-size: 16px;
+  text-align: center;
+  width: 65%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 250px;
+  margin-right: 65px;
+  font-family: 'Kalam', cursive;
+}
+
+#searchButton {
+  color: black;
+  background-color: #1DB954;
+  height: 35px;
+  width: 10%;
+  border-radius: 5px;
+  display: block;
+  margin-top: 20px;
+  margin-left: 335px;
+  font-size: 16px;
+  font-family: 'Kalam', cursive;
+}
+
+#playlist-button {
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: 45px;
+  margin-right: 700px;
+  background-color: #1DB954;
+  width: 120px;
+  height: 40px;
+  font-size: 16px;
+  border-radius: 5px;
   font-family: 'Kalam', cursive;
 }
 
@@ -72,38 +116,70 @@ input {
   height: 55%;
   width: 100%;
   align-items: center;
+  overflow-x: auto;
+  overflow-y: scroll;
 }
 
-#close {
+.search-modal {
+  background-color: black;
+  color: white;
+  width: 40%;
+  height: 400px;
+  overflow: hidden;
+  margin: 0 auto;
+  text-align: center;
+  align-items: center;
+  margin-top: 50px;
+  overflow-x: auto;
+  overflow-y: scroll;
+}
+
+.playlistModal {
+  background-color: black;
+  width: 50%;
+  height: 600px;
+  overflow: hidden;
+  margin: 0 auto;
+  text-align: center;
+  /*align-items: center;*/
+  margin-top: 50px;
+  overflow-x: auto;
+  overflow-y: scroll;
+}
+
+
+#close, #closePlaylist {
   color: black;
   background-color: #1DB954;
   width: 6%;
   border-radius: 5px;
-  font-size: 15px;
+  font-size: 16px;
   font-family: 'Kalam', cursive;
   margin: 25px;
+  float: left;
+}
+
+#track-element {
+  text-align: center;
+  display: inline-block;
+  color: white;
 }
 
 #song-list {
-  color: black;
+  text-align: center;
+  padding: 10px;
 }
 
-/*.player {
-}*/
+li {
+  list-style: none;
+}
 
 .map {
   height: 90%;
   width:100%;
   position: absolute;
-  -webkit-filter: grayscale(90%);
-  filter: grayscale(90%)
-}
-
-#footer {
-  background-color: black;
-  color: white;
-  padding: 25px;
-  font-size: 25px;
+  -webkit-filter: grayscale(70%);
+  filter: grayscale(70%)
 }
 
 @media only screen and (max-width: 950px) {
@@ -162,60 +238,8 @@ input {
   content: " ";
 }
 
-#search-form {
-  position: fixed;
-  margin-left: 10px;
-}
 
-#track-element {
-  display: inline-block;
-}
 
-#song-title {
-  display: inline-block;
-  padding-left: 4px;
-}
-
-#artist-name {
-  display: inline-block;
-  float: left;
-}
-
-#playlist-button {
-  margin: 0 auto;
-  text-align: center;
-  margin-top: 70px;
-  background-color: #1DB954;
-  width: 120px;
-  height: 40px;
-  font-size: .75rem;
-}
-
-.search-modal {
-  background-color: white;
-  width: 40%;
-  height: 400px;
-  overflow: hidden;
-  margin: 0 auto;
-  text-align: center;
-  align-items: center;
-  margin-top: 50px;
-  overflow-x: auto;
-  overflow-y: scroll;
-}
-
-.playlistModal {
-  background-color: white;
-  width: 50%;
-  height: 600px;
-  overflow: hidden;
-  margin: 0 auto;
-  text-align: center;
-  /*align-items: center;*/
-  margin-top: 50px;
-  overflow-x: auto;
-  overflow-y: scroll;
-}
 
 
 
