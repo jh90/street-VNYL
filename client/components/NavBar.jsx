@@ -88,7 +88,7 @@ export default class NavBar extends React.Component {
           onAfterOpen={this.afterOpenPlaylistModal}
           onRequestClose={this.closePlaylistModal}
         >
-          <button id="closePlaylist" onClick={this.closePlaylistModal}>x</button>
+          <button id="closePlaylist" onClick={this.closePlaylistModal}>X</button>
           <SpotifyTest />
 
 
